@@ -13,5 +13,4 @@ public class Address extends BaseEntity {
     @ManyToOne
     private Contact contact;
 
-
 }
