@@ -6,6 +6,9 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/crm-core/pom.xml" />
+        <option value="$PROJECT_DIR$/crm-api/pom.xml" />
+        <option value="$PROJECT_DIR$/crm-web/pom.xml" />
+        <option value="$PROJECT_DIR$/crm-notifications/pom.xml" />
       </list>
     </option>
   </component>
