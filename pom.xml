@@ -15,5 +15,8 @@
     </properties>
     <modules>
         <module>crm-core</module>
+        <module>crm-api</module>
+        <module>crm-web</module>
+        <module>crm-notifications</module>
     </modules>
 </project>
