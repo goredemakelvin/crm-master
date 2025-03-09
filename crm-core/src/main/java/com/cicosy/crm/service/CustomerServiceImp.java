@@ -1,7 +1,9 @@
 package com.cicosy.crm.service;
 
+import com.cicosy.crm.data.CustomerData;
 import com.cicosy.crm.entity.Customer;
 import com.cicosy.crm.repo.CustomerRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class CustomerServiceImp extends CustomerService {
 
     @Autowired
@@ -29,4 +32,10 @@ public class CustomerServiceImp extends CustomerService {
         return customerRepository.findAll();
     }
 
+    @Override
+    public void createCustomer(CustomerData customerData) {
+        log.debug("-----Creating Customer--------: " + customerData.toString());
+        Customer customer = Customer.builder().firstName(customerData.getFirstName()).lastName(customerData.getLastName()).build();
+        customerRepository.save(customer);
+    }
 }
