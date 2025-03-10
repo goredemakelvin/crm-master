@@ -2,10 +2,13 @@ package com.cicosy.crm.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class LoyaltyPoints extends BaseEntity {
 
     private int points;

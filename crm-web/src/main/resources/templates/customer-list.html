@@ -22,7 +22,8 @@
             <th>ID</th>
             <th>Firstname</th>
             <th>Lastname</th>
-            <th>Email</th>
+            <th>Customer Number</th>
+            <th>Loyalty Points</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,8 @@
             <td><a th:text="${customer.id}" th:href="@{/customer/{id}(id=${customer.id})}"></a></td>
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
+            <td th:text="${customer.customerNumber}"></td>
+            <td th:text="${customer.loyaltyPoints.points}"></td>
         </tr>
         </tbody>
     </table>

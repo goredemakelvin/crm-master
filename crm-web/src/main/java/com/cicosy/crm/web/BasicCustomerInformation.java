@@ -13,8 +13,8 @@ public class BasicCustomerInformation {
     private Customer customer;
     private String firstName;
     private String lastName;
-    private String[] phoneNumbers;
-    private String[] emailAddresses;
+    private String  phoneNumbers;
+    private String emailAddresses;
     private int loyaltyPoints;
     private Long id;
     private String customerNumber;
@@ -36,14 +36,16 @@ public class BasicCustomerInformation {
        return null;
     }
 
-    private String[] getEmailAddresses(Customer customer) {
+    private String getEmailAddresses(Customer customer) {
         if (!ObjectUtils.isEmpty(customer.getEmailAddress())) {
-            List<String> collected = customer.getEmailAddress().stream()
-                    .map(object -> Objects.toString(object, null))
-                    .collect(Collectors.toList());
-            return collected.toArray(new String[collected.size()]);
+            StringBuilder builder = new StringBuilder();
+            builder.append("[");
+            customer.getEmailAddress().forEach(item ->
+                    builder.append(item.getEmail()).append(","));
+            builder.append("]");
+            return builder.toString();
         } else {
-            return new String[]{};
+            return "";
         }
     }
 
@@ -54,16 +56,16 @@ public class BasicCustomerInformation {
             return 0;
         }
     }
-    private String[] getPhoneNumbers(Customer customer) {
+    private String getPhoneNumbers(Customer customer) {
         if (!ObjectUtils.isEmpty(customer.getPhoneNumbers())) {
-            List<String> collected = customer.getPhoneNumbers().stream()
-                    .map(object -> Objects.toString(object, null))
-                    .collect(Collectors.toList());
-            return collected.toArray(new String[collected.size()]);
+            StringBuilder builder = new StringBuilder();
+            builder.append("[");
+            customer.getPhoneNumbers().forEach(item->
+                    builder.append(item.getPhoneNumber()).append(","));
+            builder.append("]");
+            return builder.toString();
         } else {
-            return new String[]{};
+            return "";
         }
     }
-
-
 }
