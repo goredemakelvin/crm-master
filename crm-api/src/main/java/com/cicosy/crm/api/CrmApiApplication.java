@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.cicosy.crm.service","com.cicosy.crm.api"})
+@ComponentScan(basePackages = {"com.cicosy.crm.service","com.cicosy.crm.api","com.cicosy.crm.api.service"})
 @EnableJpaRepositories("com.cicosy.crm.repo")
 @EntityScan("com.cicosy.crm.entity")
 public class CrmApiApplication {
