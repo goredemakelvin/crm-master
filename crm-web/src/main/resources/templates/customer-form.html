@@ -19,12 +19,31 @@
     <form th:action="@{/save-customer}" th:object="${customer}" method="POST">
         <div class="mb-3 mt-3">
             <label for="firstName">First Name:</label>
-            <input th:field="*{firstName}" type="firstName" class="form-control" id="firstName" name="firstName">
+            <input th:field="*{firstName}" type="text" class="form-control" id="firstName" name="firstName">
             <span  class="invalid-feedback"  th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
         </div>
         <div class="mb-3 mt-3">
             <label for="lastName">Last Name:</label>
-            <input th:field="*{lastName}" type="firstName" class="form-control" id="lastName" placeholder="Enter  LastName" name="lastName">
+            <input th:field="*{lastName}" type="text" class="form-control" id="lastName" placeholder="Enter  LastName" name="lastName">
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="emailAddress">Email Address</label>
+            <input th:field="*{emailAddress}" type="email" class="form-control" id="emailAddress" placeholder="Enter  Email Address" name="emailAddress">
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="phoneNumber">Email Address</label>
+            <input th:field="*{phoneNumber}" type="text" class="form-control" id="phoneNumber" placeholder="Enter Phone Number" name="phoneNumber">
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="phoneNumber">City</label>
+            <input th:field="*{city}" type="text" class="form-control" id="city" placeholder="Enter City" name="city">
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="phoneNumber">Country</label>
+            <input th:field="*{country}" type="text" class="form-control" id="country" placeholder="Enter Country" name="country">
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

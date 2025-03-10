@@ -12,7 +12,8 @@ public class CustomerData {
     private String lastName;
     private String emailAddress;
     private String city;
-    private String state;
+    private String country;
     private Integer loyaltyPoints;
+    private String phoneNumber;
 
 }

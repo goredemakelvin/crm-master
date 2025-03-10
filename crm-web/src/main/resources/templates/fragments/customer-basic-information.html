@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:fragment="basic-info">
+<table class="table">
+    <thead class="table-dark">
+    <tr>
+        <th>Phone Numbers</th>
+        <th>Email Addresses</th>
+        <th>Loyalty Points</th>
+        <th>Customer Number</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><span th:text="${customerInformation.phoneNumbers}"></span></td>
+        <td><span th:text="${customerInformation.emailAddresses}"></span></td>
+        <td><span th:text="${customerInformation.loyaltyPoints}"></span></td>
+        <td><span th:text="${customerInformation.customerNumber}"></span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

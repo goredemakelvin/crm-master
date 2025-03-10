@@ -19,11 +19,9 @@
         <img class="card-img-top" th:src="@{/assets/images/img_avatar.png}" alt="Card image" style="width:100%">
         <div class="card-body">
             <h4 th:text="${customer.firstName} +' '+ ${customer.lastName}" class="card-title"></h4>
-            <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-            <a href="#" class="btn btn-primary">See Profile</a>
+            <p class="card-text"> 5564</p>
         </div>
     </div>
-    <h2>Customer Information</h2>
     <br>
     <!-- Nav pills -->
     <ul class="nav nav-pills" role="tablist">
@@ -52,7 +50,7 @@
     <div class="tab-content">
         <div id="home" class="container tab-pane active"><br>
             <h3>Basic Customer Information</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div th:replace="/fragments/customer-basic-information :: basic-info"></div>
         </div>
         <div id="menu1" class="container tab-pane fade"><br>
             <h3>Business Information</h3>

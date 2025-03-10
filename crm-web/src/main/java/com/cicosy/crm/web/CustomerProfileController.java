@@ -19,6 +19,9 @@ public class CustomerProfileController {
     public String customerProfile(@PathVariable Long id, Model model) {
         Optional<Customer> optionalCustomer = customerService.findById(id);
         model.addAttribute("customer", optionalCustomer.get());
+        BasicCustomerInformation basicCustomerInformation=new BasicCustomerInformation();
+        basicCustomerInformation.buildBasicCustomerInfomation(optionalCustomer.get());
+        model.addAttribute("customerInformation",basicCustomerInformation);
         return "customer-profile.html";
     }
 }
