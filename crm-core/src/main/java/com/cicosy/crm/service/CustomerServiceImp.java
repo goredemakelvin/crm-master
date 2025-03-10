@@ -76,8 +76,11 @@ public class CustomerServiceImp extends CustomerService {
         loyaltyPointsRepository.save(loyaltyPoints);
         customer.setLoyaltyPoints(loyaltyPoints);
 
+        customer.setCity(customerData.getCity());
+        customer.setCountry(customerData.getCountry());
+
         customerRepository.save(customer);
-        loyaltyPoints.setCustomer(customer);
+
         log.debug("======Customer Creation Complete =======: ");
 
     }

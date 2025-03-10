@@ -4,16 +4,13 @@ import com.cicosy.crm.entity.Customer;
 import lombok.Data;
 import org.springframework.util.ObjectUtils;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 @Data
 public class BasicCustomerInformation {
 
     private Customer customer;
     private String firstName;
     private String lastName;
-    private String  phoneNumbers;
+    private String phoneNumbers;
     private String emailAddresses;
     private int loyaltyPoints;
     private Long id;
@@ -26,14 +23,14 @@ public class BasicCustomerInformation {
             this.firstName = customer.getFirstName();
             this.lastName = customer.getLastName();
             this.id = customer.getId();
-            this.loyaltyPoints =getLoyaltyPoints(customer);
+            this.loyaltyPoints = getLoyaltyPoints(customer);
             this.emailAddresses = getEmailAddresses(customer);
-            this.id=customer.getId();
-            this.phoneNumbers=getPhoneNumbers(customer);
+            this.id = customer.getId();
+            this.phoneNumbers = getPhoneNumbers(customer);
             this.customerNumber = customer.getCustomerNumber();
-           return this;
+            return this;
         }
-       return null;
+        return null;
     }
 
     private String getEmailAddresses(Customer customer) {
@@ -56,11 +53,12 @@ public class BasicCustomerInformation {
             return 0;
         }
     }
+
     private String getPhoneNumbers(Customer customer) {
         if (!ObjectUtils.isEmpty(customer.getPhoneNumbers())) {
             StringBuilder builder = new StringBuilder();
             builder.append("[");
-            customer.getPhoneNumbers().forEach(item->
+            customer.getPhoneNumbers().forEach(item ->
                     builder.append(item.getPhoneNumber()).append(","));
             builder.append("]");
             return builder.toString();
