@@ -10,7 +10,9 @@ public class CustomerData {
     private String firstName;
     @NotBlank(message = "Please enter your LastName")
     private String lastName;
-   // @NotBlank(message = "Please enter your PhoneNumber")
-    private String phoneNumber;
+    private String emailAddress;
+    private String city;
+    private String state;
+    private Integer loyaltyPoints;
 
 }

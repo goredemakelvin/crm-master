@@ -11,5 +11,5 @@ public class EmailAddress extends BaseEntity {
     private String email;
     private boolean enabled;
     @ManyToOne
-    private Contact contact;
+    private Customer customer;
 }

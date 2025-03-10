@@ -5,6 +5,8 @@ import com.cicosy.crm.entity.Customer;
 import com.cicosy.crm.repo.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -37,5 +39,10 @@ public class CustomerServiceImp extends CustomerService {
         log.debug("-----Creating Customer--------: " + customerData.toString());
         Customer customer = Customer.builder().firstName(customerData.getFirstName()).lastName(customerData.getLastName()).build();
         customerRepository.save(customer);
+    }
+
+    @Override
+    public Page<Customer> findAllCustomers(Pageable pageable) {
+        return  customerRepository.findAll(pageable);
     }
 }

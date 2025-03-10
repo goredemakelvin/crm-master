@@ -11,5 +11,5 @@ public class Phone extends BaseEntity {
     private String phoneNumber;
     private boolean active;
     @ManyToOne
-    private Contact contact;
+    private Customer customer;
 }

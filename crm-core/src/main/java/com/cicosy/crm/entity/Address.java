@@ -11,6 +11,6 @@ public class Address extends BaseEntity {
     private String addressLine2;
     private String addressLine3;
     @ManyToOne
-    private Contact contact;
+    private Customer customer;
 
 }
