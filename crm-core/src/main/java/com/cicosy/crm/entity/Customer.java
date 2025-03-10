@@ -29,5 +29,7 @@ public class Customer extends BaseEntity {
     private List<EmailAddress> emailAddress =new ArrayList<>();
     private String city;
     private String country;
+    @OneToOne
+    private BusinessInformation businessInformation;
 
 }

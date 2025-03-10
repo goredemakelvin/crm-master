@@ -40,9 +40,10 @@ public class CustomerController {
             model.addAttribute("errorMessage", result.getAllErrors().toString());
             return "customer-form.html";
         }
-        customerService.createCustomer(customerData);
+        Customer customer=customerService.createCustomer(customerData);
         redirectAttributes.addFlashAttribute("successMessage", "Contact Details saved successfully!");
-        return "redirect:/customer-list";
+        redirectAttributes.addAttribute("customerId",customer.getId());
+        return "redirect:/new-business-info";
     }
 
 

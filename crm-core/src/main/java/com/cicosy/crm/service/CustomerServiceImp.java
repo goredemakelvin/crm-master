@@ -48,7 +48,7 @@ public class CustomerServiceImp extends CustomerService {
     }
 
     @Override
-    public void createCustomer(CustomerData customerData) {
+    public Customer createCustomer(CustomerData customerData) {
         log.debug("======Creating Customer =======: " + customerData.toString());
 
         Customer customer = new Customer();
@@ -79,9 +79,10 @@ public class CustomerServiceImp extends CustomerService {
         customer.setCity(customerData.getCity());
         customer.setCountry(customerData.getCountry());
 
-        customerRepository.save(customer);
+         customerRepository.save(customer);
 
         log.debug("======Customer Creation Complete =======: ");
+        return  customer;
 
     }
 

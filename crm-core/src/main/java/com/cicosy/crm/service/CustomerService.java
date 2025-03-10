@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public abstract class CustomerService extends AbstractService<Customer> {
 
-    public  abstract void createCustomer(CustomerData customerData);
+    public  abstract Customer createCustomer(CustomerData customerData);
 
     public abstract Page<Customer> findAllCustomers(Pageable pageable);
 

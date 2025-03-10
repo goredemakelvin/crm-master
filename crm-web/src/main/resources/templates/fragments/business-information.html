@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body th:fragment="business-info">
+<table class="table">
+    <thead class="table-dark">
+    <tr>
+        <th>Company Name</th>
+        <th>Industry</th>
+        <th>Job Title</th>
+        <th>Account Manager</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><span th:text="${businessInformation.companyName}"></span></td>
+        <td><span th:text="${businessInformation.industry}"></span></td>
+        <td><span th:text="${businessInformation.jobTitle}"></span></td>
+        <td><span th:text="${businessInformation.accountManager}"></span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

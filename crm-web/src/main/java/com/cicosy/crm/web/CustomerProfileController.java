@@ -22,6 +22,10 @@ public class CustomerProfileController {
         BasicCustomerInformation basicCustomerInformation=new BasicCustomerInformation();
         basicCustomerInformation.buildBasicCustomerInfomation(optionalCustomer.get());
         model.addAttribute("customerInformation",basicCustomerInformation);
+
+        CustomerBusinessInformation customerBusinessInformation=new CustomerBusinessInformation();
+        customerBusinessInformation.buildCustomerBusinessInformation(optionalCustomer.get());
+        model.addAttribute("businessInformation",customerBusinessInformation);
         return "customer-profile.html";
     }
 }
