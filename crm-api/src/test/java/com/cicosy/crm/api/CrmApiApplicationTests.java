@@ -1,4 +1,4 @@
-package com.cicosy.crm.crmapi;
+package com.cicosy.crm.api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
