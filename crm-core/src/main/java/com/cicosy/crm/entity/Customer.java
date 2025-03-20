@@ -27,8 +27,10 @@ public class Customer extends BaseEntity {
     private List<Phone> phoneNumbers= new ArrayList<>();
     @OneToMany
     private List<EmailAddress> emailAddress =new ArrayList<>();
-    private String city;
-    private String country;
+    @OneToOne
+    private City city;
+    @OneToOne
+    private Country country;
     @OneToOne
     private BusinessInformation businessInformation;
 

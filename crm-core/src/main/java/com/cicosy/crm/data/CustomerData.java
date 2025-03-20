@@ -11,8 +11,8 @@ public class CustomerData {
     @NotBlank(message = "Please enter your LastName")
     private String lastName;
     private String emailAddress;
-    private String city;
-    private String country;
+    private Long city;
+    private Long country;
     private Integer loyaltyPoints;
     private String phoneNumber;
 

@@ -9,7 +9,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
-@Entity
+@Entity(name = "customer_lead")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -19,11 +19,14 @@ public class Lead extends BaseEntity {
     private Customer customer;
     private LocalDate dateCreated;
     @OneToOne
-    private ContactPerson contactPerson;
-    private String jobTitle;
-    private int companySize;
+    private ContactPerson leadPer;
     @OneToOne
     private Industry industry;
+
+    @OneToOne
+    private BusinessInformation businessInformation;
+
+
 
 
 }

@@ -30,6 +30,10 @@ public class CustomerServiceImp extends CustomerService {
     private PhoneRepository phoneRepository;;
     @Autowired
     private LoyaltyPointsRepository loyaltyPointsRepository;
+    @Autowired
+    private CityService cityService;
+    @Autowired
+    private CountryService countryService;
 
 
     @Override
@@ -76,8 +80,10 @@ public class CustomerServiceImp extends CustomerService {
         loyaltyPointsRepository.save(loyaltyPoints);
         customer.setLoyaltyPoints(loyaltyPoints);
 
-        customer.setCity(customerData.getCity());
-        customer.setCountry(customerData.getCountry());
+        Optional<City> city = cityService.findById(customerData.getCity());
+        customer.setCity(city.get());
+        Optional<Country> country = countryService.findById(customerData.getCountry());
+        customer.setCountry(country.get());
 
          customerRepository.save(customer);
 

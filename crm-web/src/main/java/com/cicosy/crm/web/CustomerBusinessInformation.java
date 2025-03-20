@@ -15,7 +15,7 @@ public class CustomerBusinessInformation {
     public CustomerBusinessInformation buildCustomerBusinessInformation(Customer customer) {
         if(customer.getBusinessInformation()!=null) {
             this.companyName=customer.getBusinessInformation().getCompanyName();
-            this.industry=customer.getBusinessInformation().getIndustry();
+            this.industry=customer.getBusinessInformation().getIndustry().getName();
             this.jobTitle=customer.getBusinessInformation().getJobTitle();
             this.accountManager=customer.getBusinessInformation().getAccountManager();
             this.customerId=customer.getId();
