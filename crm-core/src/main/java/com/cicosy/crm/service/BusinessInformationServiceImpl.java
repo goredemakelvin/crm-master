@@ -78,6 +78,7 @@ public class BusinessInformationServiceImpl extends BusinessInformationService {
                 businessInformation.setCountry(country);
             }
         }
+
         businessInformationRepository.save(businessInformation);
 
     }

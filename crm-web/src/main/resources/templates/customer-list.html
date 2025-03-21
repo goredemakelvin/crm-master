@@ -34,7 +34,7 @@
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
             <td th:text="${customer.customerNumber}"></td>
-            <td th:text="${customer.city}"></td>
+            <td th:text="${customer.city.name}"></td>
         </tr>
         </tbody>
     </table>
@@ -42,25 +42,25 @@
     <ul class="pagination">
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/customer-list-v2(page=0, size=${customerPage.size})}">First</a></li>
+               th:href="@{/customer-list(page=0, size=${customerPage.size})}">First</a></li>
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/customer-list-v2(page=${currentPage - 1}, size=${customerPage.size})}">Previous</a>
+               th:href="@{/customer-list(page=${currentPage - 1}, size=${customerPage.size})}">Previous</a>
 
         </li>
         <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
            <li class="page-item">
-            <a class="page-link" th:href="@{/customer-list-v2(page=${i}, size=${customerPage.size})}"
+            <a class="page-link" th:href="@{/customer-list(page=${i}, size=${customerPage.size})}"
                th:text="${i + 1}"
                th:classappend="${i == currentPage} ? 'active' : ''"></a>
            </li>
         </span>
 
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/customer-list-v2(page=${currentPage + 1}, size=${customerPage.size})}">Next</a>
+                                 th:href="@{/customer-list(page=${currentPage + 1}, size=${customerPage.size})}">Next</a>
         </li>
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/customer-list-v2(page=${totalPages - 1}, size=${customerPage.size})}">Last</a>
+                                 th:href="@{/customer-list(page=${totalPages - 1}, size=${customerPage.size})}">Last</a>
         </li>
     </ul>
 </div>

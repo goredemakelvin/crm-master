@@ -15,20 +15,19 @@ public class BusinessInformationData {
     private String accountManager;
     private Long customerId;
 
-    public BusinessInformationData getCustomerBusinessInformation(Customer customer) {
-        if(customer.getBusinessInformation()!=null) {
-            BusinessInformation b = customer.getBusinessInformation();
-            this.companyName=b.getCompanyName();
-            if(b.getIndustry()!=null) {
-                Industry i = b.getIndustry();
+    public BusinessInformationData getCustomerBusinessInformation(BusinessInformation businessInformation) {
+        if(businessInformation!=null) {
+            this.companyName=businessInformation.getCompanyName();
+            if(businessInformation.getIndustry()!=null) {
+                Industry i = businessInformation.getIndustry();
                 this.industry=i.getName();
             }
-            this.jobTitle=b.getJobTitle();
-            if(b.getAccountManager()!=null) {
-                this.accountManager=b.getAccountManager().getFirstName();
+            this.jobTitle=businessInformation.getJobTitle();
+            if(businessInformation.getAccountManager()!=null) {
+                this.accountManager=businessInformation.getAccountManager().getFirstName();
             }
 
-            this.customerId= customer.getId();
+            this.customerId= businessInformation.getCustomer().getId();
             return this;
         }
         return null;

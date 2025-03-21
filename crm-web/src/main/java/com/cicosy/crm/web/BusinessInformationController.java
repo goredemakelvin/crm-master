@@ -33,11 +33,11 @@ public class BusinessInformationController {
     @GetMapping("/new-business-info")
     public String captureBusinessInformation(@ModelAttribute("customerId") Long customerId, Model model) {
         BusinessFormData businessFormData = new BusinessFormData();
+        businessFormData.setCustomerId(customerId);
         model.addAttribute("businessInformation", businessFormData);
         model.addAttribute("industries", industryService.findAll());
         model.addAttribute("cities", cityService.findAll());
         model.addAttribute("countries",countryService.findAll());
-        model.addAttribute("customerId", customerId);
         return  "business-info-form.html";
     }
 

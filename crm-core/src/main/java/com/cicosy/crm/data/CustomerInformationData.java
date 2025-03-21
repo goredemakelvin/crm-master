@@ -21,7 +21,7 @@ public class CustomerInformationData {
 
 
 
-    public CustomerInformationData getCustomerInformation(Customer customer, BusinessInformation businessInformation) {
+    public CustomerInformationData getCustomerInformation(Customer customer) {
         this.customer = customer;
         if (this.customer != null) {
             this.firstName = customer.getFirstName();
@@ -32,7 +32,6 @@ public class CustomerInformationData {
             this.id = customer.getId();
             this.phoneNumbers = getPhoneNumbers(customer);
             this.customerNumber = customer.getCustomerNumber();
-            this.businessInformation= new BusinessInformationData().getCustomerBusinessInformation(customer);
             return this;
 
         }
