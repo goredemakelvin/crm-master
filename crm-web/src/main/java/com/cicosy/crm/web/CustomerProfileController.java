@@ -1,5 +1,6 @@
 package com.cicosy.crm.web;
 
+import com.cicosy.crm.data.BusinessInformationData;
 import com.cicosy.crm.entity.Customer;
 import com.cicosy.crm.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class CustomerProfileController {
         basicCustomerInformation.buildBasicCustomerInfomation(optionalCustomer.get());
         model.addAttribute("customerInformation",basicCustomerInformation);
 
-        CustomerBusinessInformation customerBusinessInformation=new CustomerBusinessInformation();
-        customerBusinessInformation.buildCustomerBusinessInformation(optionalCustomer.get());
-        model.addAttribute("businessInformation",customerBusinessInformation);
+        BusinessInformationData businessInformationData =new BusinessInformationData();
+        businessInformationData.buildCustomerBusinessInformation(optionalCustomer.get());
+        model.addAttribute("businessInformation", businessInformationData);
         return "customer-profile.html";
     }
 }

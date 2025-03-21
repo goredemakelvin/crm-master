@@ -2,6 +2,8 @@ package com.cicosy.crm.web;
 
 import com.cicosy.crm.data.CustomerData;
 import com.cicosy.crm.entity.Customer;
+import com.cicosy.crm.service.CityService;
+import com.cicosy.crm.service.CountryService;
 import com.cicosy.crm.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,17 @@ public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private CityService cityService;
+    @Autowired
+    private CountryService countryService;
 
     @GetMapping("/customer")
     public String register(Model model) {
         CustomerData customerData = new CustomerData();
         model.addAttribute("customer", customerData);
+        model.addAttribute("cities", cityService.findAll());
+        model.addAttribute("countries", countryService.findAll());
         return "customer-form.html";
     }
 
@@ -51,13 +59,10 @@ public class CustomerController {
     public String getPaginatedCustomers(Model model,
                                         @RequestParam(defaultValue = "0") int page,
                                         @RequestParam(defaultValue = "5") int size,
-                                        @RequestParam(defaultValue = "id") String sortBy, @ModelAttribute("successMessage") String successMessage
+                                        @RequestParam(defaultValue = "id") String sortBy
 
 
     ) {
-        if (!ObjectUtils.isEmpty(successMessage)) {
-            model.addAttribute("successMessage", successMessage);
-        }
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
         Page<Customer> customerPage = customerService.findAllCustomers(pageable);
         model.addAttribute("customerPage", customerPage);

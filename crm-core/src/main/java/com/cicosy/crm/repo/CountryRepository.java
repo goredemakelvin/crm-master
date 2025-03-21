@@ -1,6 +1,5 @@
 package com.cicosy.crm.repo;
 
-import com.cicosy.crm.entity.City;
 import com.cicosy.crm.entity.Country;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

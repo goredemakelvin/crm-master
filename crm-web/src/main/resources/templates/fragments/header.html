@@ -95,7 +95,7 @@
         <span th:text="${errorMessage}"></span>
     </div>
 
-    <div th:if="${successMessage}" class="alert alert-success alert-dismissible">
+    <div th:if="${successMessage != null}" class="alert alert-success alert-dismissible">
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         <span th:text="${successMessage}">Success!</span>
     </div>

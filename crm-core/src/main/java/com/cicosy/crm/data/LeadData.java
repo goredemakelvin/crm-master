@@ -1,0 +1,75 @@
+package com.cicosy.crm.data;
+
+import com.cicosy.crm.entity.*;
+import lombok.Data;
+
+import java.util.Arrays;
+import java.util.List;
+
+@Data
+public class LeadData {
+
+    private String fullName;
+    private Long id;
+    private String industry;
+    private String emailAddress;
+    private String phoneNumber;
+    private String company;
+    private String jobTitle;
+    private String city;
+    private String country;
+    private String leadSource;
+    private String utmParameters;
+    private String referralURL;
+    private String[] pagesVisited;
+    private int timeSpentOnSite;
+    private String[] downloadHistory;
+    private String preferedContact;
+    private String enquiry;
+    private String[] webformResponses;
+    private boolean optInConsent;
+
+
+    public  LeadData getLeadData(Lead lead) {
+        LeadData leadData = new LeadData();
+        lead.setId(leadData.getId());
+        if (lead.getCustomer() != null) {
+            Customer customer = lead.getCustomer();
+            String firstName = customer.getFirstName();
+            String lastName = customer.getLastName();
+            String fullName = firstName + " " + lastName;
+            leadData.setFullName(fullName);
+            if (customer.getBusinessInformation() != null) {
+                BusinessInformation businessInformation = customer.getBusinessInformation();
+                leadData.setIndustry(businessInformation.getIndustry().getName());
+                leadData.setCity(businessInformation.getCity().getName());
+            }
+            if (customer.getEmailAddress() != null) {
+                List<EmailAddress> emailAddresses = customer.getEmailAddress();
+                String[] emails = emailAddresses.toArray(new String[emailAddresses.size()]);
+                for (EmailAddress e : emailAddresses) {
+                    int i = 0;
+                    emails[++i] = e.getEmail();
+                }
+                leadData.setEmailAddress(Arrays.toString(emails));
+            }
+
+            if (customer.getPhoneNumbers() != null) {
+                List<Phone> phones = customer.getPhoneNumbers();
+                String[] phoneNumbers = phones.toArray(new String[phones.size()]);
+                for (Phone e : phones) {
+                    int i = 0;
+                    phoneNumbers[++i] = e.getPhoneNumber();
+                }
+                leadData.setPhoneNumber(Arrays.toString(phoneNumbers));
+            }
+            if (customer.getCountry() != null) {
+                leadData.setCountry(customer.getCountry().getName());
+
+            }
+
+
+        }
+        return leadData;
+    }
+}

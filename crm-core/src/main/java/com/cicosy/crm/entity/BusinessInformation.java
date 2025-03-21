@@ -17,6 +17,8 @@ public class BusinessInformation  extends BaseEntity{
     private Industry industry;
     @OneToOne
     private City city;
+    @OneToOne
+    private Country country;
     private String jobTitle;
     private String accountManager;
     private Long customerId;

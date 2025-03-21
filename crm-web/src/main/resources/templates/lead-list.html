@@ -20,23 +20,31 @@
         <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Customer Number</th>
-            <th>Loyalty Points</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Company Name</th>
+            <th>Job Title</th>
             <th>City</th>
+            <th>Country</th>
+            <th>Lead Source</th>
+            <th>Preferred Contact Method</th>
         </tr>
         </thead>
         <tbody>
 
         <tbody>
-        <tr th:each="customer : ${customerPage.content}">
-            <td><a th:text="${customer.id}" th:href="@{/customer/{id}(id=${customer.id})}"></a></td>
-            <td th:text="${customer.firstName}"></td>
-            <td th:text="${customer.lastName}"></td>
-            <td th:text="${customer.customerNumber}"></td>
-            <td th:text="${customer.loyaltyPoints.points}"></td>
-            <td th:text="${customer.city}"></td>
+        <tr th:each="lead : ${leadsPage.content}">
+            <td><a th:text="${lead.id}" th:href="@{/lead/{id}(id=${lead.id})}"></a></td>
+            <td th:text="${lead.fullName}"></td>
+            <td th:text="${lead.email}"></td>
+            <td th:text="${lead.phoneNumbers}"></td>
+            <td th:text="${lead.companyName}"></td>
+            <td th:text="${lead.jobTitle}"></td>
+            <td th:text="${lead.city}"></td>
+            <td th:text="${lead.country}"></td>
+            <td th:text="${lead.source}"></td>
+            <td th:text="${lead.preferedContantMethod}"></td>
         </tr>
         </tbody>
     </table>
@@ -44,15 +52,15 @@
     <ul class="pagination">
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/customer-list-v2(page=0, size=${customerPage.size})}">First</a></li>
+               th:href="@{/lead-list(page=0, size=${leadsPage.size})}">First</a></li>
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/customer-list-v2(page=${currentPage - 1}, size=${customerPage.size})}">Previous</a>
+               th:href="@{/lead-list(page=${currentPage - 1}, size=${leadsPage.size})}">Previous</a>
 
         </li>
         <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
            <li class="page-item">
-            <a class="page-link" th:href="@{/customer-list-v2(page=${i}, size=${customerPage.size})}"
+            <a class="page-link" th:href="@{/lead-list(page=${i}, size=${leadsPage.size})}"
                th:text="${i + 1}"
                th:classappend="${i == currentPage} ? 'active' : ''"></a>
            </li>

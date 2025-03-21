@@ -1,11 +1,8 @@
 package com.cicosy.crm.web;
 
-import com.cicosy.crm.data.BusinessInformationData;
-import com.cicosy.crm.data.CustomerData;
 import com.cicosy.crm.entity.BusinessInformation;
 import com.cicosy.crm.service.BusinessInformationService;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

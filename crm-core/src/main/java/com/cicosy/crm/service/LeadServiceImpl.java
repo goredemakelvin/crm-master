@@ -3,6 +3,8 @@ package com.cicosy.crm.service;
 import com.cicosy.crm.entity.Lead;
 import com.cicosy.crm.repo.LeadRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,5 +29,10 @@ public class LeadServiceImpl extends LeadService {
     @Override
     public List<Lead> findAll() {
         return leadRepository.findAll();
+    }
+
+    @Override
+    public Page<Lead> findAllLeads(Pageable pageable) {
+        return leadRepository.findAll(pageable);
     }
 }
