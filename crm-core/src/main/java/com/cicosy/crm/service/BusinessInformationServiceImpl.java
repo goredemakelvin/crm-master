@@ -3,9 +3,9 @@ package com.cicosy.crm.service;
 import com.cicosy.crm.data.BusinessFormData;
 import com.cicosy.crm.entity.*;
 import com.cicosy.crm.repo.BusinessInformationRepository;
-import com.cicosy.crm.repo.CityRepository;
-import com.cicosy.crm.repo.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public class BusinessInformationServiceImpl extends BusinessInformationService {
     @Autowired
     private CustomerService customerService;
     @Autowired
-    private  CityService cityService;
+    private CityService cityService;
     @Autowired
     private IndustryService industryService;
     @Autowired
@@ -47,33 +47,33 @@ public class BusinessInformationServiceImpl extends BusinessInformationService {
         BusinessInformation businessInformation = new BusinessInformation();
         businessInformation.setCompanyName(businessFormData.getCompanyName());
         businessInformation.setCompanySize(businessFormData.getCompanySize());
-        if(businessFormData.getCustomerId()!=null) {
+        if (businessFormData.getCustomerId() != null) {
             Optional<Customer> optionalCustomer = customerService.findById(businessFormData.getCustomerId());
-            if(optionalCustomer.isPresent()) {
+            if (optionalCustomer.isPresent()) {
                 Customer customer = optionalCustomer.get();
                 businessInformation.setCustomer(customer);
             }
-            }
-        if(businessFormData.getCity()!=null) {
+        }
+        if (businessFormData.getCity() != null) {
             Optional<City> optionalCity = cityService.findById(businessFormData.getCity());
-            if(optionalCity.isPresent()) {
+            if (optionalCity.isPresent()) {
                 City city = optionalCity.get();
                 businessInformation.setCity(city);
             }
 
         }
-        if(businessFormData.getIndustry()!=null) {
+        if (businessFormData.getIndustry() != null) {
             Optional<Industry> optionalIndustry = industryService.findById(businessFormData.getIndustry());
-            if(optionalIndustry.isPresent()) {
+            if (optionalIndustry.isPresent()) {
                 Industry industry = optionalIndustry.get();
                 businessInformation.setIndustry(industry);
             }
 
         }
 
-        if(businessFormData.getCountry()!=null) {
+        if (businessFormData.getCountry() != null) {
             Optional<Country> optionalCountry = countryService.findById(businessFormData.getCountry());
-            if(optionalCountry.isPresent()) {
+            if (optionalCountry.isPresent()) {
                 Country country = optionalCountry.get();
                 businessInformation.setCountry(country);
             }
@@ -85,7 +85,12 @@ public class BusinessInformationServiceImpl extends BusinessInformationService {
 
     @Override
     public Optional<BusinessInformation> findByCustomer(Customer customer) {
-      return businessInformationRepository.findByCustomer(customer);
+        return businessInformationRepository.findByCustomer(customer);
+    }
+
+    @Override
+    public Page<BusinessInformation> findAllBusinessInformation(Pageable pageable) {
+        return businessInformationRepository.findAll(pageable);
     }
 
 

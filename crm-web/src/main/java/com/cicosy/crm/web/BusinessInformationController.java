@@ -2,19 +2,21 @@ package com.cicosy.crm.web;
 
 import com.cicosy.crm.data.BusinessFormData;
 import com.cicosy.crm.entity.BusinessInformation;
-import com.cicosy.crm.entity.Customer;
 import com.cicosy.crm.service.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.Optional;
 
 @Controller
 public class BusinessInformationController {
@@ -53,6 +55,24 @@ public class BusinessInformationController {
         redirectAttributes.addFlashAttribute("successMessage", "Business Information saved successfully!");
         return "redirect:/customer-list";
     }
+
+    @GetMapping("/business-info-list")
+    public String getPaginatedBusinessInformation(Model model,
+                                        @RequestParam(defaultValue = "0") int page,
+                                        @RequestParam(defaultValue = "5") int size,
+                                        @RequestParam(defaultValue = "id") String sortBy
+
+
+    ) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
+        Page<BusinessInformation> businessInformationPage = businessInformationService.findAllBusinessInformation(pageable);
+        model.addAttribute("businessInformationPage", businessInformationPage);
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", businessInformationPage.getTotalPages());
+        model.addAttribute("sortBy", sortBy);
+        return "business-info-list.html";
+    }
+
 
 
 
