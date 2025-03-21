@@ -19,8 +19,6 @@ public class Customer extends BaseEntity {
     private String firstName;
     private String lastName;
     private String customerNumber;
-    @OneToOne
-    private LoyaltyPoints loyaltyPoints;
     @OneToMany
     private List<Address> addresses = new ArrayList<>();
     @OneToMany

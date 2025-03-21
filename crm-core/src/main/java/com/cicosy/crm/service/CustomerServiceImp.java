@@ -6,6 +6,7 @@ import com.cicosy.crm.repo.CustomerRepository;
 import com.cicosy.crm.repo.EmailAddressRepository;
 import com.cicosy.crm.repo.LoyaltyPointsRepository;
 import com.cicosy.crm.repo.PhoneRepository;
+import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import java.util.Optional;
 import java.util.Random;
 
 @Service
+@Transactional
 @Slf4j
 public class CustomerServiceImp extends CustomerService {
 
@@ -26,9 +28,7 @@ public class CustomerServiceImp extends CustomerService {
     private EmailAddressRepository emailAddressRepository;
     @Autowired
     private PhoneRepository phoneRepository;
-    ;
-    @Autowired
-    private LoyaltyPointsRepository loyaltyPointsRepository;
+
     @Autowired
     private CityService cityService;
     @Autowired
@@ -52,12 +52,10 @@ public class CustomerServiceImp extends CustomerService {
 
     @Override
     public Customer createCustomer(CustomerData customerData) {
-        log.debug("======Creating Customer =======: " + customerData.toString());
 
         Customer customer = new Customer();
         customer.setFirstName(customerData.getFirstName());
         customer.setLastName(customerData.getLastName());
-        customerRepository.save(customer);
 
         Phone phone = new Phone();
         phone.setPhoneNumber(customerData.getPhoneNumber());
@@ -72,11 +70,6 @@ public class CustomerServiceImp extends CustomerService {
         customer.getEmailAddress().add(emailAddress);
 
         customer.setCustomerNumber(getCustomerNumber());
-        LoyaltyPoints loyaltyPoints = new LoyaltyPoints();
-        loyaltyPoints.setPoints(10);
-        loyaltyPoints.setCustomer(customer);
-        loyaltyPointsRepository.save(loyaltyPoints);
-        customer.setLoyaltyPoints(loyaltyPoints);
 
         Optional<City> city = cityService.findById(customerData.getCity());
         if (city.isPresent()) {

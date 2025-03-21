@@ -19,9 +19,14 @@ public class BusinessInformation  extends BaseEntity{
     private City city;
     @OneToOne
     private Country country;
+
     private String jobTitle;
-    private String accountManager;
-    private Long customerId;
+
+    @OneToOne
+    private ContactPerson accountManager;
+    @OneToOne
+    private Customer customer;
+
     private int companySize;
 
 }

@@ -9,39 +9,36 @@
 </head>
 
 <body>
+
 <!-- Main navbar -->
 <div th:replace="/fragments/header :: header"></div>
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Admin Page</h2>
-    <p>This page is designed for configurations</p>
-    <table class="table">
-        <thead class="table-dark">
-        <tr>
-            <th>City</th>
-            <th>Country</th>
-            <th>Industry</th>
-        </tr>
-        </thead>
-        <tbody>
+    <h2>Industry Form</h2>
+    <form th:action="@{/save-industry}" th:object="${industry}" method="POST">
+            <input th:field="*{id}" type="hidden" class="form-control" id="id" name="id" readonly="readonly">
 
-        <tbody>
-        <tr >
-            <td><a th:href="@{/city-list}">Cities</a></td>
-            <td><a th:href="@{/country-list}">Countries</a></td>
-            <td><a th:href="@{/industry-list}">Industries</a></td>
-        </tr>
-        </tbody>
-    </table>
+        <div class="mb-3 mt-3">
+            <label for="name">Name:</label>
+            <input th:field="*{name}" type="text" class="form-control" id="name" name="name">
+        </div>
+        <button type="button" class="btn btn-danger">Cancel</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
-
 
 <!-- Footer -->
 <div th:replace="/fragments/footer :: footer"></div>
 <!-- /footer -->
 
 </div>
+<!-- /page container -->
 
 </body>
 </html>
+
+
+
+
+

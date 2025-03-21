@@ -14,24 +14,23 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Countries Page</h2>
-    <p><a href="#" class="link-underline-primary" th:href="@{/country-form}">Add Country</a></p>
-    <p>This page shows  countries  captured by the system</p>
+    <h2>Industries Page</h2>
+    <p><a href="#" class="link-underline-primary" th:href="@{/industry-form}">Add Industry</a></p>
+
+    <p>This page shows  industries captured by the system</p>
     <table class="table">
         <thead class="table-dark">
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Code</th>
         </tr>
         </thead>
         <tbody>
 
         <tbody>
-        <tr th:if="${countryPage != null}"  th:each="country : ${countryPage.content}">
-            <td><a th:text="${country.id}" th:href="@{/country/{id}(id=${country.id})}"></a></td>
-            <td th:text="${country.name}"></td>
-            <td th:text="${country.code}"></td>
+        <tr th:if="${industryPage != null}"  th:each="industry : ${industryPage.content}">
+            <td><a th:text="${industry.id}" th:href="@{/industry/{id}(id=${industry.id})}"></a></td>
+            <td th:text="${industry.name}"></td>
         </tr>
         </tbody>
     </table>
@@ -39,25 +38,25 @@
     <ul class="pagination">
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/country-list(page=0, size=${countryPage.size})}">First</a></li>
+               th:href="@{/industry-list(page=0, size=${industryPage.size})}">First</a></li>
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/country-list(page=${currentPage - 1}, size=${countryPage.size})}">Previous</a>
+               th:href="@{/industry-list(page=${currentPage - 1}, size=${industryPage.size})}">Previous</a>
 
         </li>
         <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
            <li class="page-item">
-            <a class="page-link" th:href="@{/country-list(page=${i}, size=${countryPage.size})}"
+            <a class="page-link" th:href="@{/industry-list(page=${i}, size=${industryPage.size})}"
                th:text="${i + 1}"
                th:classappend="${i == currentPage} ? 'active' : ''"></a>
            </li>
         </span>
 
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/country-list(page=${currentPage + 1}, size=${countryPage.size})}">Next</a>
+                                 th:href="@{/industry-list(page=${currentPage + 1}, size=${industryPage.size})}">Next</a>
         </li>
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/country-list(page=${totalPages - 1}, size=${countryPage.size})}">Last</a>
+                                 th:href="@{/industry-list(page=${totalPages - 1}, size=${industryPage.size})}">Last</a>
         </li>
     </ul>
 </div>

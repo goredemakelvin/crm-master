@@ -15,12 +15,10 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>City Details Form</h2>
+    <h2>Country Details Form</h2>
     <form th:action="@{/save-country}" th:object="${country}" method="POST">
-        <div class="mb-3 mt-3">
-            <label for="name">ID</label>
-            <input th:field="*{id}" type="text" class="form-control" id="id" name="id" readonly="readonly">
-        </div>
+            <input th:field="*{id}" type="hidden" class="form-control" id="id" name="id" readonly="readonly">
+
         <div class="mb-3 mt-3">
             <label for="name">Name:</label>
             <input th:field="*{name}" type="text" class="form-control" id="name" name="name">

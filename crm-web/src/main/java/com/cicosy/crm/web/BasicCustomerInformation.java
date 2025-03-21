@@ -47,11 +47,11 @@ public class BasicCustomerInformation {
     }
 
     private int getLoyaltyPoints(Customer customer) {
-        if (!ObjectUtils.isEmpty(customer.getLoyaltyPoints())) {
-            return customer.getLoyaltyPoints().getPoints();
-        } else {
+//        if (!ObjectUtils.isEmpty(customer.getLoyaltyPoints())) {
+//            return customer.getLoyaltyPoints().getPoints();
+//        } else {
             return 0;
-        }
+      //  }
     }
 
     private String getPhoneNumbers(Customer customer) {

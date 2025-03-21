@@ -7,6 +7,7 @@ import lombok.Data;
 
 @Data
 public class BusinessInformationData {
+
     private Customer customer;
     private String companyName;
     private String industry;
@@ -23,7 +24,10 @@ public class BusinessInformationData {
                 this.industry=i.getName();
             }
             this.jobTitle=b.getJobTitle();
-            this.accountManager=b.getAccountManager();
+            if(b.getAccountManager()!=null) {
+                this.accountManager=b.getAccountManager().getFirstName();
+            }
+
             this.customerId= customer.getId();
             return this;
         }

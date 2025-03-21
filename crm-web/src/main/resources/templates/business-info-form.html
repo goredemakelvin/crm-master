@@ -15,7 +15,7 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Customer Business Information  Form </h2>
+    <h2>Customer Business Information Form </h2>
     <form th:action="@{/save-business-info}" th:object="${businessInformation}" method="POST">
         <input th:field="*{customerId}" type="hidden">
         <div class="mb-3 mt-3">
@@ -23,18 +23,57 @@
             <input th:field="*{companyName}" type="text" class="form-control" id="companyName" name="companyName">
         </div>
         <div class="mb-3 mt-3">
-            <label for="industry">Industry:</label>
-            <input th:field="*{industry}" type="text" class="form-control" id="industry" name="industry">
+            <label for="jobTitle">Industry</label>
+
+        <select th:field="*{industry}" class="form-select" aria-label="-- Select an Option --">
+            <option value="">-- Select an Option --
+            </option>
+            <option
+                    th:each="item : ${industries}"
+                    th:value="${item.id}"
+                    th:text="${item.name}"
+            ></option>
+        </select>
         </div>
+
+        <div class="mb-3 mt-3">
+            <label for="jobTitle">City</label>
+            <select th:field="*{city}" class="form-select" aria-label="-- Select an Option --">
+                <option value="">-- Select an Option --
+                </option>
+                <option
+                        th:each="item : ${cities}"
+                        th:value="${item.id}"
+                        th:text="${item.name}"
+                ></option>
+            </select>
+        </div>
+
+
+        <div class="mb-3 mt-3">
+            <label for="jobTitle">Country</label>
+            <select th:field="*{country}" class="form-select" aria-label="-- Select an Option --">
+                <option value="">-- Select an Option --
+                </option>
+                <option
+                        th:each="item : ${countries}"
+                        th:value="${item.id}"
+                        th:text="${item.name}"
+                ></option>
+            </select>
+        </div>
+
         <div class="mb-3 mt-3">
             <label for="jobTitle">Job Title</label>
             <input th:field="*{jobTitle}" type="jobTitle" class="form-control" id="jobTitle" name="jobTitle">
         </div>
 
         <div class="mb-3 mt-3">
-            <label for="accountManager">Account Manager</label>
-            <input th:field="*{accountManager}" type="text" class="form-control" id="accountManager"  name="accountManager">
+            <label for="jobTitle">Company Size</label>
+            <input th:field="*{companySize}" type="companySize" class="form-control" id="companySize"
+                   name="companySize">
         </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
@@ -48,9 +87,6 @@
 
 </body>
 </html>
-
-
-
 
 
 <!--<!DOCTYPE html>-->

@@ -22,7 +22,7 @@ public class CountryServiceImpl extends CountryService{
 
     @Override
     public Optional<Country> findById(Long id) {
-        return Optional.empty();
+        return countryRepository.findById(id);
     }
 
     @Override

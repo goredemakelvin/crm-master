@@ -31,19 +31,19 @@ public class CityController {
     }
 
     @PostMapping("/save-city")
-    public String saveCustomer(@Valid @ModelAttribute("city") CityData cityData,
+    public String saveCity(@Valid @ModelAttribute("city") CityData cityData,
                                BindingResult result, Model model,
                                RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             model.addAttribute("errorMessage", result.getAllErrors().toString());
             return "city-form.html";
         }
-        Optional<City> optionalCity = cityService.findById(cityData.getId());
         City city = null;
-        if (optionalCity.isPresent()) {
-            city = optionalCity.get();
-        } else {
+        if(cityData.getId() == null) {
             city = new City();
+        }else{
+        Optional<City> optionalCity = cityService.findById(cityData.getId());
+            city = optionalCity.get();
         }
         city.setName(cityData.getName());
         city.setId(cityData.getId());
@@ -54,15 +54,12 @@ public class CityController {
     }
 
     @GetMapping("/city-list")
-    public String getPaginatedCustomers(Model model,
+    public String getPaginatedCities(Model model,
                                         @RequestParam(defaultValue = "0") int page,
                                         @RequestParam(defaultValue = "5") int size,
-                                        @RequestParam(defaultValue = "id") String sortBy, @ModelAttribute("successMessage") String successMessage
+                                        @RequestParam(defaultValue = "id") String sortBy
 
     ) {
-        if (!ObjectUtils.isEmpty(successMessage)) {
-            model.addAttribute("successMessage", successMessage);
-        }
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
         Page<City> cityPage = cityService.findAllCities(pageable);
         model.addAttribute("cityPage", cityPage);
@@ -73,7 +70,8 @@ public class CityController {
     }
 
     @GetMapping("/city/{id}")
-    public String customerProfile(@PathVariable Long id, Model model) {
+    public String getCity(@PathVariable Long id, Model model) {
+
         Optional<City> optionalCity = cityService.findById(id);
         model.addAttribute("city", optionalCity.get());
         return "city-form.html";
