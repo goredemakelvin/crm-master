@@ -1,7 +1,10 @@
 package com.cicosy.crm.web;
 
+import com.cicosy.crm.data.CustomerInformationData;
 import com.cicosy.crm.data.BusinessInformationData;
+import com.cicosy.crm.entity.BusinessInformation;
 import com.cicosy.crm.entity.Customer;
+import com.cicosy.crm.service.BusinessInformationService;
 import com.cicosy.crm.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,18 +18,23 @@ import java.util.Optional;
 public class CustomerProfileController {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private BusinessInformationService businessInformationService;
 
     @GetMapping("/customer/{id}")
     public String customerProfile(@PathVariable Long id, Model model) {
         Optional<Customer> optionalCustomer = customerService.findById(id);
-        model.addAttribute("customer", optionalCustomer.get());
-        BasicCustomerInformation basicCustomerInformation=new BasicCustomerInformation();
-        basicCustomerInformation.buildBasicCustomerInfomation(optionalCustomer.get());
-        model.addAttribute("customerInformation",basicCustomerInformation);
+        if (optionalCustomer.isPresent()) {
+            model.addAttribute("customer", optionalCustomer.get());
+            Optional<BusinessInformation> optionalBusinessInformation = businessInformationService.findByCustomer(optionalCustomer.get());
+            if (optionalBusinessInformation.isPresent()) {
+                CustomerInformationData c=new CustomerInformationData();
+                CustomerInformationData customerInformation = c.getCustomerInformation(optionalCustomer.get(), optionalBusinessInformation.get());
+                model.addAttribute("customerInformation",customerInformation);
+                model.addAttribute("businessInformation", customerInformation.getBusinessInformation());
+            }
 
-        BusinessInformationData businessInformationData =new BusinessInformationData();
-        businessInformationData.buildCustomerBusinessInformation(optionalCustomer.get());
-        model.addAttribute("businessInformation", businessInformationData);
+        }
         return "customer-profile.html";
     }
 }

@@ -15,7 +15,7 @@ public class BusinessInformationData {
     private String accountManager;
     private Long customerId;
 
-    public BusinessInformationData buildCustomerBusinessInformation(Customer customer) {
+    public BusinessInformationData getCustomerBusinessInformation(Customer customer) {
         if(customer.getBusinessInformation()!=null) {
             BusinessInformation b = customer.getBusinessInformation();
             this.companyName=b.getCompanyName();

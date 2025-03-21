@@ -1,11 +1,12 @@
-package com.cicosy.crm.web;
+package com.cicosy.crm.data;
 
+import com.cicosy.crm.entity.BusinessInformation;
 import com.cicosy.crm.entity.Customer;
 import lombok.Data;
 import org.springframework.util.ObjectUtils;
 
 @Data
-public class BasicCustomerInformation {
+public class CustomerInformationData {
 
     private Customer customer;
     private String firstName;
@@ -15,9 +16,12 @@ public class BasicCustomerInformation {
     private int loyaltyPoints;
     private Long id;
     private String customerNumber;
+    private BusinessInformationData businessInformation;
 
 
-    public BasicCustomerInformation buildBasicCustomerInfomation(Customer customer) {
+
+
+    public CustomerInformationData getCustomerInformation(Customer customer, BusinessInformation businessInformation) {
         this.customer = customer;
         if (this.customer != null) {
             this.firstName = customer.getFirstName();
@@ -28,7 +32,9 @@ public class BasicCustomerInformation {
             this.id = customer.getId();
             this.phoneNumbers = getPhoneNumbers(customer);
             this.customerNumber = customer.getCustomerNumber();
+            this.businessInformation= new BusinessInformationData().getCustomerBusinessInformation(customer);
             return this;
+
         }
         return null;
     }

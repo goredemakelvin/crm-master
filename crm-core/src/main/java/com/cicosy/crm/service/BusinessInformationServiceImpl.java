@@ -81,4 +81,11 @@ public class BusinessInformationServiceImpl extends BusinessInformationService {
         businessInformationRepository.save(businessInformation);
 
     }
+
+    @Override
+    public Optional<BusinessInformation> findByCustomer(Customer customer) {
+      return businessInformationRepository.findByCustomer(customer);
+    }
+
+
 }
