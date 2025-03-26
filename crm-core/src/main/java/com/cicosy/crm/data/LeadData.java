@@ -1,6 +1,7 @@
 package com.cicosy.crm.data;
 
 import com.cicosy.crm.entity.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.Arrays;
@@ -13,7 +14,9 @@ public class LeadData {
     private Long id;
     private String industry;
     private String emailAddress;
+    @NotBlank(message = "Please enter your Phone Number")
     private String phoneNumber;
+    @NotBlank(message = "Please enter your Company Name")
     private String company;
     private String jobTitle;
     private String city;
@@ -28,6 +31,10 @@ public class LeadData {
     private String enquiry;
     private String[] webformResponses;
     private boolean optInConsent;
+    @NotBlank(message = "Please enter your FirstName")
+    private String firstName;
+    @NotBlank(message = "Please enter your LastName")
+    private String lastName;
 
 
     public  LeadData getLeadData(Lead lead) {
