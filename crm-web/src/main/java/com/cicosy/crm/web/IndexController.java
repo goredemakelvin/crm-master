@@ -8,6 +8,11 @@ public class IndexController {
 
     @GetMapping("/")
     public String index() {
-        return "redirect:/customer-list";
+        return "redirect:/dashboard";
+    }
+
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "dashboard.html";
     }
 }
