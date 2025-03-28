@@ -37,7 +37,7 @@ public class LeadData {
     private String lastName;
 
 
-    public  LeadData getLeadData(Lead lead) {
+    public LeadData getLeadData(Lead lead) {
         LeadData leadData = new LeadData();
         lead.setId(leadData.getId());
         if (lead.getCustomer() != null) {
@@ -48,25 +48,29 @@ public class LeadData {
             leadData.setFullName(fullName);
             if (customer.getBusinessInformation() != null) {
                 BusinessInformation businessInformation = customer.getBusinessInformation();
-                leadData.setIndustry(businessInformation.getIndustry().getName());
-                leadData.setCity(businessInformation.getCity().getName());
+                if (businessInformation.getIndustry() != null) {
+                    leadData.setIndustry(businessInformation.getIndustry().getName());
+                }
+                if (businessInformation.getCity() != null) {
+                    leadData.setCity(businessInformation.getCity().getName());
+                }
             }
             if (customer.getEmailAddress() != null) {
                 List<EmailAddress> emailAddresses = customer.getEmailAddress();
-                String[] emails = emailAddresses.toArray(new String[emailAddresses.size()]);
+                String[] emails = emailAddresses.stream().map(String::valueOf).toArray(String[]::new);
+                int i = 0;
                 for (EmailAddress e : emailAddresses) {
-                    int i = 0;
-                    emails[++i] = e.getEmail();
+                    emails[i++] = e.getEmail();
                 }
                 leadData.setEmailAddress(Arrays.toString(emails));
             }
 
             if (customer.getPhoneNumbers() != null) {
                 List<Phone> phones = customer.getPhoneNumbers();
-                String[] phoneNumbers = phones.toArray(new String[phones.size()]);
+                String[] phoneNumbers = phones.stream().map(String::valueOf).toArray(String[]::new);
+                int i = 0;
                 for (Phone e : phones) {
-                    int i = 0;
-                    phoneNumbers[++i] = e.getPhoneNumber();
+                    phoneNumbers[i++] = e.getPhoneNumber();
                 }
                 leadData.setPhoneNumber(Arrays.toString(phoneNumbers));
             }
