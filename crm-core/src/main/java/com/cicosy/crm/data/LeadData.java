@@ -35,6 +35,9 @@ public class LeadData {
     private String firstName;
     @NotBlank(message = "Please enter your LastName")
     private String lastName;
+    @NotBlank(message = "Please enter your company size")
+    private int companySize;
+    private long leadScore;
 
 
     public LeadData getLeadData(Lead lead) {
@@ -77,6 +80,9 @@ public class LeadData {
             if (customer.getCountry() != null) {
                 leadData.setCountry(customer.getCountry().getName());
 
+            }
+            if(lead.getLeadScore() != null) {
+                leadData.setLeadScore(lead.getLeadScore().getScore());
             }
 
 

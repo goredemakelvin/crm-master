@@ -25,6 +25,8 @@ public class LeadServiceImpl extends LeadService {
     private BusinessInformationRepository businessInformationRepository;
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private LeadScoreService leadScoreService;
 
     @Override
     public Lead save(Lead lead) {
@@ -81,7 +83,13 @@ public class LeadServiceImpl extends LeadService {
 
         lead.setCustomer(customer);
 
-       return leadRepository.save(lead);
+        leadRepository.save(lead);
+
+        if(leadData.getCompanySize()>0){
+            leadScoreService.assignScore(leadData, lead);
+        }
+
+       return lead;
     }
 
 }

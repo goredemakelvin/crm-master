@@ -25,7 +25,8 @@ public class Lead extends BaseEntity {
 
     @OneToOne
     private BusinessInformation businessInformation;
-
+    @OneToOne
+    private LeadScore leadScore;
 
 
 

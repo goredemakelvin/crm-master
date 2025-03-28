@@ -34,7 +34,7 @@
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
             <td th:text="${customer.customerNumber}"></td>
-            <td th:text="${customer.city.name}"></td>
+            <td th:text="${customer?.city?.name}"></td>
         </tr>
         </tbody>
     </table>
