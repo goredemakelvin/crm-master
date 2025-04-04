@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LeadRepository extends JpaRepository<Lead, Long> {
     Page<Lead> findAll(Pageable pageable);
+
 }

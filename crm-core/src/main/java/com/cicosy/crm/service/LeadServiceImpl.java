@@ -27,6 +27,9 @@ public class LeadServiceImpl extends LeadService {
     private CustomerRepository customerRepository;
     @Autowired
     private LeadScoreService leadScoreService;
+    @Autowired
+    private ContactPersonRepository contactPersonRepository;
+
 
     @Override
     public Lead save(Lead lead) {
@@ -91,5 +94,23 @@ public class LeadServiceImpl extends LeadService {
 
        return lead;
     }
+
+    @Override
+    public Lead assignLead(Long leadId,Long contactPersonId) {
+        Optional<Lead> optionalLead = leadRepository.findById(leadId);
+        Optional<ContactPerson> optionalContactPerson = contactPersonRepository.findById(contactPersonId);
+        if(optionalLead.isPresent() && optionalContactPerson.isPresent()){
+            Lead lead = optionalLead.get();
+            lead.setContactPerson(optionalContactPerson.get());
+            return leadRepository.save(lead);
+        }
+        return  null;
+    }
+
+    @Override
+    public long count() {
+        return leadRepository.count();
+    }
+
 
 }

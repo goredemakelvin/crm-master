@@ -19,9 +19,9 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-sm-3">
-            <h3>Total Orders</h3>
+            <h3>Total Leads</h3>
             <div class="card bg-primary text-white">
-                <div class="card-body">Basic card</div>
+                <div class="card-body"><span th:text="${leadsCount}"></span></div>
             </div>
         </div>
         <div class="col-sm-3">
@@ -59,6 +59,8 @@
                     <th>Country</th>
                     <th>Lead Source</th>
                     <th>Preferred Contact Method</th>
+                    <th>Contact Sales Person</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -76,6 +78,19 @@
                     <td th:text="${lead.country}"></td>
                     <td th:text="${lead.leadSource}"></td>
                     <td th:text="${lead.preferedContact}"></td>
+                    <td th:text="${lead.contactPerson}"></td>
+                    <td><div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"  th:href="@{/assign-lead/{id}(id=${lead.id})}">Assign</a></li>
+                            <li><a class="dropdown-item" href="#">Link 2</a></li>
+                            <li><a class="dropdown-item" href="#">Link 3</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Another link</a></li>
+                        </ul>
+                    </div></td>
                 </tr>
                 </tbody>
             </table>

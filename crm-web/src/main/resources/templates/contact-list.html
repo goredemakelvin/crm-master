@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CRM Web Portal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+<!-- Main navbar -->
+<div th:replace="/fragments/header :: header"></div>
+<!-- /main navbar -->
+
+<div class="container mt-3">
+    <h2>Contact Persons Page</h2>
+    <p><a href="#" class="link-underline-primary" th:href="@{/contact-form}">Add Contact Person</a></p>
+    <p>This page shows  contact persons who will assist in lead management</p>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tbody>
+        <tr th:if="${contactPage != null}"  th:each="person : ${contactPage.content}">
+            <td><a th:text="${person.id}" th:href="@{/contact/{id}(id=${person.id})}"></a></td>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.phoneNumber}"></td>
+            <td th:text="${person.emailAddress}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" th:if="${currentPage > 0}"
+               th:href="@{/contact-list(page=0, size=${contactPage.size})}">First</a></li>
+        <li class="page-item">
+            <a class="page-link" th:if="${currentPage > 0}"
+               th:href="@{/contact-list(page=${currentPage - 1}, size=${contactPage.size})}">Previous</a>
+
+        </li>
+        <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
+           <li class="page-item">
+            <a class="page-link" th:href="@{/contact-list(page=${i}, size=${contactPage.size})}"
+               th:text="${i + 1}"
+               th:classappend="${i == currentPage} ? 'active' : ''"></a>
+           </li>
+        </span>
+
+        <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
+                                 th:href="@{/contact-list(page=${currentPage + 1}, size=${contactPage.size})}">Next</a>
+        </li>
+        <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
+                                 th:href="@{/contact-list(page=${totalPages - 1}, size=${contactPage.size})}">Last</a>
+        </li>
+    </ul>
+</div>
+
+
+<!-- Footer -->
+<div th:replace="/fragments/footer :: footer"></div>
+<!-- /footer -->
+
+</div>
+
+</body>
+</html>

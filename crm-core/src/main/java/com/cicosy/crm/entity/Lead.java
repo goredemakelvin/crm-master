@@ -19,7 +19,7 @@ public class Lead extends BaseEntity {
     private Customer customer;
     private LocalDate dateCreated;
     @OneToOne
-    private ContactPerson leadPer;
+    private ContactPerson contactPerson;
     @OneToOne
     private Industry industry;
 

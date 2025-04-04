@@ -38,11 +38,12 @@ public class LeadData {
     @NotBlank(message = "Please enter your company size")
     private int companySize;
     private long leadScore;
+    private String contactPerson;
 
 
     public LeadData getLeadData(Lead lead) {
         LeadData leadData = new LeadData();
-        lead.setId(leadData.getId());
+        leadData.setId(lead.getId());
         if (lead.getCustomer() != null) {
             Customer customer = lead.getCustomer();
             String firstName = customer.getFirstName();
@@ -83,6 +84,11 @@ public class LeadData {
             }
             if(lead.getLeadScore() != null) {
                 leadData.setLeadScore(lead.getLeadScore().getScore());
+            }
+
+            if(lead.getContactPerson() != null) {
+                String contactPerson= lead.getContactPerson().getFirstName()+ " "+ lead.getContactPerson().getLastName();
+                leadData.setContactPerson(contactPerson);
             }
 
 

@@ -8,4 +8,6 @@ import org.springframework.data.domain.Pageable;
 public abstract  class LeadService extends AbstractService<Lead>{
     public abstract Page<Lead> findAllLeads(Pageable pageable);
     public abstract Lead createLead(LeadData leadData);
+    public abstract Lead assignLead(Long  leadId,Long contactPersonId);
+    public abstract long count();
 }

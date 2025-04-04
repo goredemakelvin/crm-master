@@ -1,7 +1,6 @@
 package com.cicosy.crm.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,12 +13,10 @@ import lombok.Setter;
 @Setter
 public class ContactPerson extends BaseEntity {
 
-    private String firstName;;
+    private String firstName;
     private String lastName;
-    @OneToOne
-    private Phone phone;
-    @OneToOne
-    private EmailAddress emailAddress;
+    private String phoneNumber;
+    private String emailAddress;
 
 
 }
