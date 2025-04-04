@@ -42,7 +42,7 @@ public class IndexController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", leadsPage.getTotalPages());
         model.addAttribute("sortBy", sortBy);
-        model.addAttribute("leadsCount",leadService.count());
+        model.addAttribute("leadsCount",leadService.findAllLeads(pageable).getTotalElements());
         model.addAttribute("customersCount",customerService.countByConverted(true));
 
         return "dashboard.html";

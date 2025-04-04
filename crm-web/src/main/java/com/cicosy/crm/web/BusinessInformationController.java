@@ -12,11 +12,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Optional;
 
 @Controller
 public class BusinessInformationController {
@@ -74,7 +73,18 @@ public class BusinessInformationController {
     }
 
 
+    @GetMapping("/business-info/{id}")
+    public String editBusinessInformation(@PathVariable Long id, Model model){
+        Optional<BusinessInformation> businessInformation = businessInformationService.findById(id);
+        if (businessInformation.isPresent()) {
+            model.addAttribute("businessInformation", businessInformation.get());
+            model.addAttribute("industries", industryService.findAll());
+            model.addAttribute("cities", cityService.findAll());
+            model.addAttribute("countries",countryService.findAll());
 
+        }
+        return  "business-info-form.html";
 
+    }
 
 }

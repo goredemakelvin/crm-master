@@ -29,6 +29,8 @@ public class Lead extends BaseEntity {
     @ManyToOne
     private LeadScore leadScore;
 
+    private boolean converted;
+
 
 
 }

@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
-    Page<Customer> findAll(Pageable pageable);
+    Page<Customer> findByConverted(boolean converted,Pageable pageable);
      long countByConverted(boolean converted);
 }

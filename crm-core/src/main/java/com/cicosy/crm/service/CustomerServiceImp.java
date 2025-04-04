@@ -86,7 +86,7 @@ public class CustomerServiceImp extends CustomerService {
 
     @Override
     public Page<Customer> findAllCustomers(Pageable pageable) {
-        return customerRepository.findAll(pageable);
+        return customerRepository.findByConverted(true,pageable);
     }
 
     @Override

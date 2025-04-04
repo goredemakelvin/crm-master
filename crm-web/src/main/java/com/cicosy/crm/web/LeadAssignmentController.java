@@ -1,7 +1,9 @@
 package com.cicosy.crm.web;
 
+import com.cicosy.crm.entity.Customer;
 import com.cicosy.crm.entity.Lead;
 import com.cicosy.crm.service.ContactPersonService;
+import com.cicosy.crm.service.CustomerService;
 import com.cicosy.crm.service.LeadService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class LeadAssignmentController {
     private LeadService leadService;
     @Autowired
     private ContactPersonService contactPersonService;
+    @Autowired
+    private CustomerService customerService;
 
     @GetMapping("/assign-lead/{id}")
     public String leadForm(@PathVariable Long id, Model model) {
@@ -42,12 +46,28 @@ public class LeadAssignmentController {
             return "lead-assignment-form.html";
         }
         Optional<Lead> optionalLead = leadService.findById(lead.getId());
-        if(optionalLead.isPresent()) {
+        if (optionalLead.isPresent()) {
             Lead leadSaved = optionalLead.get();
             leadSaved.setContactPerson(lead.getContactPerson());
             leadService.save(leadSaved);
         }
         redirectAttributes.addFlashAttribute("successMessage", "Lead saved successfully!");
         return "redirect:/dashboard";
+    }
+
+    @GetMapping("/convert-lead/{id}")
+    public String convertLead(@PathVariable Long id, Model model, RedirectAttributes redirectAttributes) {
+        Optional<Lead> optionalLead = leadService.findById(id);
+        if (optionalLead.isPresent()) {
+            Lead leadSaved = optionalLead.get();
+            Customer customer = leadSaved.getCustomer();
+            customer.setConverted(true);
+            customerService.save(customer);
+            leadSaved.setConverted(true);
+            leadService.save(leadSaved);
+        }
+        redirectAttributes.addFlashAttribute("successMessage", "Lead conversion successful!");
+        return "redirect:/dashboard";
+
     }
 }

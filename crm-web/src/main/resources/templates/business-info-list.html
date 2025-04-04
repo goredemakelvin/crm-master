@@ -21,7 +21,7 @@
     <table class="table">
         <thead class="table-dark">
         <tr>
-<!--            <th>ID</th>-->
+         <th>ID</th>
             <th>Company Name</th>
             <th>Industry</th>
             <th>City</th>
@@ -34,7 +34,7 @@
 
         <tbody>
         <tr th:if="${businessInformationPage != null }"  th:each="item : ${businessInformationPage.content}">
-<!--            <td><a th:text="${item.id}" th:href="@{/business-info/{id}(id=${item.id})}"></a></td>-->
+           <td><a th:text="${item.id}" th:href="@{/business-info/{id}(id=${item.id})}"></a></td>
             <td th:text="${item.companyName}"></td>
             <td th:text="${item?.industry?.name}"></td>
             <td th:text="${item?.city?.name}"></td>

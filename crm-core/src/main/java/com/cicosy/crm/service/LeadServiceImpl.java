@@ -48,7 +48,7 @@ public class LeadServiceImpl extends LeadService {
 
     @Override
     public Page<Lead> findAllLeads(Pageable pageable) {
-        return leadRepository.findAll(pageable);
+        return leadRepository.findByConverted(true,pageable);
     }
 
     @Override
