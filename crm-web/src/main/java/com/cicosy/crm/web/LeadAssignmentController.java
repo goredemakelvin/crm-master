@@ -70,4 +70,15 @@ public class LeadAssignmentController {
         return "redirect:/dashboard";
 
     }
+
+    @GetMapping("/lead-profile/{id}")
+    public String leadPage(@PathVariable Long id, Model model) {
+        Optional<Lead> optionalLead = leadService.findById(id);
+        if (optionalLead.isPresent()) {
+            model.addAttribute("lead", optionalLead.get());
+        }
+        return "lead-profile.html";
+    }
+
+
 }
