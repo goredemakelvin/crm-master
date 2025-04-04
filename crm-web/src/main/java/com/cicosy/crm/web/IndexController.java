@@ -1,6 +1,7 @@
 package com.cicosy.crm.web;
 
 import com.cicosy.crm.data.LeadData;
+import com.cicosy.crm.service.CustomerService;
 import com.cicosy.crm.service.LeadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,8 @@ public class IndexController {
 
     @Autowired
     private LeadService leadService;
+    @Autowired
+    private CustomerService customerService;
 
     @GetMapping("/")
     public String index() {
@@ -40,7 +43,7 @@ public class IndexController {
         model.addAttribute("totalPages", leadsPage.getTotalPages());
         model.addAttribute("sortBy", sortBy);
         model.addAttribute("leadsCount",leadService.count());
-
+        model.addAttribute("customersCount",customerService.countByConverted(true));
 
         return "dashboard.html";
     }

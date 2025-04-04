@@ -89,8 +89,15 @@ public class CustomerServiceImp extends CustomerService {
         return customerRepository.findAll(pageable);
     }
 
+    @Override
+    public long countByConverted(boolean converted) {
+        return customerRepository.countByConverted(converted);
+    }
+
     private String getCustomerNumber() {
         int i = new Random().nextInt(1000000) + 1;
         return String.valueOf(i);
     }
+
+
 }

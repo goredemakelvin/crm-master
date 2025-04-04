@@ -1,6 +1,7 @@
 package com.cicosy.crm.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.*;
@@ -25,11 +26,14 @@ public class Customer extends BaseEntity {
     private List<Phone> phoneNumbers= new ArrayList<>();
     @OneToMany
     private List<EmailAddress> emailAddress =new ArrayList<>();
-    @OneToOne
+    @ManyToOne
     private City city;
-    @OneToOne
+    @ManyToOne
     private Country country;
-    @OneToOne
+    @ManyToOne
     private BusinessInformation businessInformation;
+
+    private boolean converted;
+
 
 }

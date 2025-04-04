@@ -36,9 +36,9 @@
         <tr th:if="${businessInformationPage != null }"  th:each="item : ${businessInformationPage.content}">
 <!--            <td><a th:text="${item.id}" th:href="@{/business-info/{id}(id=${item.id})}"></a></td>-->
             <td th:text="${item.companyName}"></td>
-            <td th:text="${item.industry.name}"></td>
-            <td th:text="${item.city.name}"></td>
-            <td th:text="${item.country.name}"></td>
+            <td th:text="${item?.industry?.name}"></td>
+            <td th:text="${item?.city?.name}"></td>
+            <td th:text="${item?.country?.name}"></td>
             <td th:text="${item.customer.firstName}"></td>
             <td th:text="${item.companySize}"></td>
         </tr>

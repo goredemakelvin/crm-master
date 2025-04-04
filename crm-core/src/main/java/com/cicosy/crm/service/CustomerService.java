@@ -13,4 +13,5 @@ public abstract class CustomerService extends AbstractService<Customer> {
 
     public abstract Page<Customer> findAllCustomers(Pageable pageable);
 
+    public abstract long countByConverted(boolean converted);
 }
