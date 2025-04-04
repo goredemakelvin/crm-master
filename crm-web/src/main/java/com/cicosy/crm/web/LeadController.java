@@ -18,13 +18,13 @@ public class LeadController {
     private LeadService leadService;
 
     @GetMapping("/lead-list")
-    public String list(Model mdodel,
-                       @RequestParam(defaultValue = "0") int page,
-                       @RequestParam(defaultValue = "5") int size,
-                       @RequestParam(defaultValue = "id") String sortBy, Model model
+    public String list(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "id") String sortBy, Model model
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
-        Page<LeadData> leadsPage = leadService.findAllLeads(pageable).map(item->{
+        Page<LeadData> leadsPage = leadService.findAllLeads(pageable).map(item -> {
             LeadData lead = new LeadData();
             return lead.getLeadData(item);
         });

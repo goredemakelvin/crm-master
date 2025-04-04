@@ -1,6 +1,7 @@
 package com.cicosy.crm.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,17 +16,17 @@ import java.time.LocalDate;
 @Getter
 @Setter
 public class Lead extends BaseEntity {
-    @OneToOne
+    @ManyToOne
     private Customer customer;
     private LocalDate dateCreated;
-    @OneToOne
+    @ManyToOne
     private ContactPerson contactPerson;
     @OneToOne
     private Industry industry;
 
-    @OneToOne
+   @ManyToOne
     private BusinessInformation businessInformation;
-    @OneToOne
+    @ManyToOne
     private LeadScore leadScore;
 
 
