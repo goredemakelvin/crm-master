@@ -11,5 +11,5 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 public class Notification implements Serializable {
     private String message;
     private String title;
-    private String type;
+    private int id;
 }
