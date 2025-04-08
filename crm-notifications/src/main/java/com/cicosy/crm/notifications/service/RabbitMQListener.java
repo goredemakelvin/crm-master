@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class RabbitMQListner implements MessageListener {
+public class RabbitMQListener implements MessageListener {
 
 	public void onMessage(Message message) {
 

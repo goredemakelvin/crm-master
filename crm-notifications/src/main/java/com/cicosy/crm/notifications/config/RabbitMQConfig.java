@@ -1,6 +1,6 @@
 package com.cicosy.crm.notifications.config;
 
-import com.cicosy.crm.notifications.service.RabbitMQListner;
+import com.cicosy.crm.notifications.service.RabbitMQListener;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
@@ -60,7 +60,7 @@ public class RabbitMQConfig {
 		SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
 		simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
 		simpleMessageListenerContainer.setQueues(queue());
-		simpleMessageListenerContainer.setMessageListener(new RabbitMQListner());
+		simpleMessageListenerContainer.setMessageListener(new RabbitMQListener());
 		return simpleMessageListenerContainer;
 
 	}
