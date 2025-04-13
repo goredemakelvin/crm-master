@@ -1,5 +1,6 @@
 package com.cicosy.crm.notifications.service;
 
+import com.cicosy.crm.notifications.data.EmailTemplate;
 import com.cicosy.crm.notifications.model.Notification;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
@@ -23,6 +24,12 @@ public class RabbitMQSender {
     public void send(Notification notification) {
         amqpTemplate.convertAndSend(exchange, routingkey, notification);
         log.info("Send msg = " + notification);
+
+    }
+
+    public void sendEmailNotification(EmailTemplate emailTemplate) {
+        amqpTemplate.convertAndSend(exchange, routingkey, emailTemplate);
+        log.info("Send msg = " + emailTemplate);
 
     }
 }
