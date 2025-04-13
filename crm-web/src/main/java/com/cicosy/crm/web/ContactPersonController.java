@@ -59,7 +59,7 @@ public class ContactPersonController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", cityPage.getTotalPages());
         model.addAttribute("sortBy", sortBy);
-        return "contact-list.html";
+        return "contact-person-list.html";
     }
 
     @GetMapping("/contact/{id}")

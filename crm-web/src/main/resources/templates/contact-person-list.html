@@ -14,22 +14,27 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Contacts Page</h2>
-<!--    <p><a href="#" class="link-underline-primary" th:href="@{/city-form}">Add City</a></p>-->
+    <h2>Contact Persons Page</h2>
+    <p><a href="#" class="link-underline-primary" th:href="@{/contact-form}">Add Contact Person</a></p>
+    <p>This page shows  contact persons who will assist in lead management</p>
     <table class="table">
         <thead class="table-dark">
         <tr>
-            <th>Contact Name</th>
-<!--            <th>AccountNumber</th>-->
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Email</th>
         </tr>
         </thead>
         <tbody>
-
         <tbody>
-        <tr th:if="${contactPage != null}"  th:each="contact : ${contactPage.content}">
-<!--            <td><a th:text="${city.id}" th:href="@{/city/{id}(id=${city.id})}"></a></td>-->
-            <td th:text="${contact.name}"></td>
-<!--            <td th:text="${account.accountNumber}"></td>-->
+        <tr th:if="${contactPage != null}"  th:each="person : ${contactPage.content}">
+            <td><a th:text="${person.id}" th:href="@{/contact/{id}(id=${person.id})}"></a></td>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.phoneNumber}"></td>
+            <td th:text="${person.emailAddress}"></td>
         </tr>
         </tbody>
     </table>
@@ -37,25 +42,25 @@
     <ul class="pagination">
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/contact-lead-list(page=0, size=${contactPage.size})}">First</a></li>
+               th:href="@{/contact-list(page=0, size=${contactPage.size})}">First</a></li>
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
-               th:href="@{/contact-lead-list(page=${currentPage - 1}, size=${contactPage.size})}">Previous</a>
+               th:href="@{/contact-list(page=${currentPage - 1}, size=${contactPage.size})}">Previous</a>
 
         </li>
         <span th:each="i : ${#numbers.sequence(0, totalPages - 1)}">
            <li class="page-item">
-            <a class="page-link" th:href="@{/contact-lead-list(page=${i}, size=${contactPage.size})}"
+            <a class="page-link" th:href="@{/contact-list(page=${i}, size=${contactPage.size})}"
                th:text="${i + 1}"
                th:classappend="${i == currentPage} ? 'active' : ''"></a>
            </li>
         </span>
 
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/contact-lead-list(page=${currentPage + 1}, size=${contactPage.size})}">Next</a>
+                                 th:href="@{/contact-list(page=${currentPage + 1}, size=${contactPage.size})}">Next</a>
         </li>
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/contact-lead-list(page=${totalPages - 1}, size=${contactPage.size})}">Last</a>
+                                 th:href="@{/contact-list(page=${totalPages - 1}, size=${contactPage.size})}">Last</a>
         </li>
     </ul>
 </div>
