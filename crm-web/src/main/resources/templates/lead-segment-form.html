@@ -23,6 +23,18 @@
             <label for="name">Name:</label>
             <input th:field="*{name}" type="text" class="form-control" id="name" name="name">
         </div>
+
+
+        <div class="mb-3 mt-3">
+            <label for="maxNotificationCount">Max Notification Count:</label>
+            <input th:field="*{maxNotificationCount}" type="number" class="form-control" id="maxNotificationCount" name="maxNotificationCount">
+        </div>
+
+        <div class="mb-3 mt-3">
+            <label for="currentNotificationCount">Current Notification Count:</label>
+            <input th:field="*{currentNotificationCount}" type="number" class="form-control" id="currentNotificationCount" name="currentNotificationCount" disabled>
+        </div>
+
         <button type="button" class="btn btn-danger">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

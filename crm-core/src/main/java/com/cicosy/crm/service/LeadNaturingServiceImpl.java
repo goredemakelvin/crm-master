@@ -13,7 +13,7 @@ public class LeadNaturingServiceImpl  implements LeadNaturingService {
 
     @Override
     public void sendEmailMessage(Lead lead) {
-        notificationService.sendEmailNotification(lead);
+        //notificationService.sendEmailNotification(lead, notificationMessage);
     }
 
     @Override

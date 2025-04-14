@@ -20,5 +20,7 @@ public class LeadSegment  extends BaseEntity{
     private List<Lead> leads;
     private boolean active;
     private String name;
+    private int maxNotificationCount;
+    private int currentNotificationCount;
 
 }

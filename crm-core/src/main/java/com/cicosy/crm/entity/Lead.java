@@ -31,6 +31,9 @@ public class Lead extends BaseEntity {
 
     private boolean converted;
 
+    @ManyToOne
+    private LeadSegment leadSegment;
+
 
 
 }
