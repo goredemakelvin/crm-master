@@ -36,7 +36,7 @@ public class LeadData {
     @NotBlank(message = "Please enter your LastName")
     private String lastName;
     @NotBlank(message = "Please enter your company size")
-    private int companySize;
+    private double companySize;
     private long leadScore;
     private String contactPerson;
 
