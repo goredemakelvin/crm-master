@@ -5,9 +5,12 @@ import lombok.Data;
 @Data
 public class EmailTemplate {
 
-    private String subject;
-    private String content;
-    private String to;
+    private String title;
     private String from;
+    private String to;
+    private String subject;
+    private String attachment;
+    private String content;
+    private int id;
 
 }

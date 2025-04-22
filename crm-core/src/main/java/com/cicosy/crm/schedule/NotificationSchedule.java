@@ -22,7 +22,7 @@ public class NotificationSchedule {
     private LeadRepository leadRepository;
 
     // Runs 5 seconds after the previous task completes
-    @Scheduled(fixedDelay = 5000)
+    //@Scheduled(fixedDelay = 5000)
     public void processAllLeads() {
         log.info("-------fixedDelayTask  sending notifications-----");
         int page = 0;

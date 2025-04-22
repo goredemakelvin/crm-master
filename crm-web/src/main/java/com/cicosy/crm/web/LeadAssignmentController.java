@@ -71,6 +71,8 @@ public class LeadAssignmentController {
 
     }
 
+
+
     @GetMapping("/lead-profile/{id}")
     public String leadPage(@PathVariable Long id, Model model) {
         Optional<Lead> optionalLead = leadService.findById(id);

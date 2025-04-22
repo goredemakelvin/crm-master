@@ -20,7 +20,7 @@ public class CrmNotificationsApplication {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(CrmNotificationsApplication.class, args);
 
         NotificationService service = applicationContext.getBean(NotificationService.class);
-        service.sendMessage();
+        //service.sendMessage();
 
     }
 

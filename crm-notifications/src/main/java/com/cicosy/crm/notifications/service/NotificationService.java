@@ -13,7 +13,7 @@ public class NotificationService {
     public void sendMessage() {
         Notification notification = new Notification();
         notification.setTitle("Notification Title");
-        notification.setMessage("Notification Message");
+        notification.setContent("Notification Message");
         rabbitMQSender.send(notification);
     }
 }
