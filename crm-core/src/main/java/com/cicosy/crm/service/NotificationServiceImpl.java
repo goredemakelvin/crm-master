@@ -17,8 +17,7 @@ public class NotificationServiceImpl implements NotificationService {
 
 
     @Override
-    public void sendEmailNotification(Lead lead, NotificationMessage notificationMessage) {
-        EmailTemplate emailTemplate = new EmailTemplate();
+    public void sendEmailNotification(EmailTemplate emailTemplate) {
         EmailTemplate response = restTemplate.postForObject(url, emailTemplate, EmailTemplate.class);
 
 

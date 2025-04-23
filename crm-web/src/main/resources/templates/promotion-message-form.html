@@ -20,6 +20,15 @@
             <input th:field="*{id}" type="hidden" class="form-control" id="id" name="id" readonly="readonly">
 
         <div class="mb-3 mt-3">
+            <label for="subject">Subject:</label>
+            <input th:field="*{subject}" type="subject" class="form-control" id="subject" name="subject">
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="scheduleDay">Schedule Day:</label>
+            <input th:field="*{scheduleDay}" type="scheduleDay" class="form-control" id="scheduleDay" name="scheduleDay">
+        </div>
+
+        <div class="mb-3 mt-3">
             <label for="leadSegment">Lead Segment</label>
 
             <select th:field="*{leadSegment}" class="form-select" aria-label="-- Select an Option --">

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Data
 @MappedSuperclass
-public abstract class BaseEntity implements Serializable {
+public abstract class BaseEntity extends Auditable implements Serializable{
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

@@ -1,5 +1,6 @@
 package com.cicosy.crm.service;
 
+import com.cicosy.crm.entity.LeadSegment;
 import com.cicosy.crm.entity.PromotionMessage;
 import com.cicosy.crm.repo.PromotionMessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +36,11 @@ public class PromotionMessageServiceImpl extends PromotionMessageService {
     public Page<PromotionMessage> findAllPromotionMessages(Pageable pageable) {
         return promotionMessageRepository.findAll(pageable);
     }
+
+    @Override
+    public List<PromotionMessage> findAllByLeadSegment(LeadSegment leadSegment) {
+        return promotionMessageRepository.findByLeadSegment(leadSegment);
+    }
+
+
 }

@@ -18,4 +18,6 @@ public class PromotionMessage  extends BaseEntity{
     private LeadSegment leadSegment;
 
     private String  text;
+    private String subject;
+    private int scheduleDay;
 }

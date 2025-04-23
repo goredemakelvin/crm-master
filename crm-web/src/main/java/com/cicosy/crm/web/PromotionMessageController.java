@@ -51,6 +51,8 @@ public class PromotionMessageController {
         }
         message.setText(promotionMessage.getText());
         message.setLeadSegment(promotionMessage.getLeadSegment());
+        message.setSubject(promotionMessage.getSubject());
+        message.setScheduleDay(promotionMessage.getScheduleDay());
         promotionMessageService.save(message);
         redirectAttributes.addFlashAttribute("successMessage", "Lead Segment saved successfully!");
         return "redirect:/promotion-message-list";
