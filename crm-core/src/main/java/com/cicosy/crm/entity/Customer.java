@@ -1,9 +1,6 @@
 package com.cicosy.crm.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
@@ -24,7 +21,7 @@ public class Customer extends BaseEntity {
     private List<Address> addresses = new ArrayList<>();
     @OneToMany
     private List<Phone> phoneNumbers= new ArrayList<>();
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<EmailAddress> emailAddress =new ArrayList<>();
     @ManyToOne
     private City city;
