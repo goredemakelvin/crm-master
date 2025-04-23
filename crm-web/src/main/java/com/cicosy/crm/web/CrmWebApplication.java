@@ -13,7 +13,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableJpaRepositories("com.cicosy.crm.repo")
 @EntityScan("com.cicosy.crm.entity")
 @EnableScheduling
-//@EnableJpaAuditing(auditorAwareRef = "auditorProvider")
+@EnableJpaAuditing(auditorAwareRef = "auditorProvider-v2")
 public class CrmWebApplication {
 
     public static void main(String[] args) {

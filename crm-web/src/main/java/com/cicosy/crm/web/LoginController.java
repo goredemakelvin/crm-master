@@ -15,4 +15,10 @@ public class LoginController {
    public String logout() {
         return "logout.html";
     }
+
+
+    @GetMapping("/home")
+    public String index() {
+        return "redirect:/dashboard";
+    }
 }
