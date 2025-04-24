@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +27,12 @@ public class UserAdminController {
     }
 
     @PostMapping("/users/{id}/update-roles")
-    public String updateRoles(@PathVariable Long id, @RequestParam(required = false) List<String> roles) {
+    public String updateRoles(@PathVariable Long id, @RequestParam(required = false) List<String> roles
+    , RedirectAttributes redirectAttributes) {
         AppUser user = userRepo.findById(id).orElseThrow();
         user.setRoles(roles != null ? roles : new ArrayList<>());
         userRepo.save(user);
+        redirectAttributes.addFlashAttribute("errorMessage", "Roles updated for user: " + user.getUsername());
         return "redirect:/admin/users";
     }
 }
