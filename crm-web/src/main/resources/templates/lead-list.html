@@ -67,10 +67,10 @@
         </span>
 
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/lead-list(page=${currentPage + 1}, size=${customerPage.size})}">Next</a>
+                                 th:href="@{/lead-list(page=${currentPage + 1}, size=${leadsPage.size})}">Next</a>
         </li>
         <li class="page-item"><a class="page-link" th:if="${currentPage < totalPages - 1}"
-                                 th:href="@{/lead-list(page=${totalPages - 1}, size=${customerPage.size})}">Last</a>
+                                 th:href="@{/lead-list(page=${totalPages - 1}, size=${leadsPage.size})}">Last</a>
         </li>
     </ul>
 </div>
