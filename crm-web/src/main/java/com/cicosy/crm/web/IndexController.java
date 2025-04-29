@@ -31,7 +31,7 @@ public class IndexController {
     @GetMapping("/dashboard")
     public String dashboard(
             @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "5") int size,
+            @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "id") String sortBy, Model model) {
 
 
@@ -46,7 +46,6 @@ public class IndexController {
         model.addAttribute("sortBy", sortBy);
         model.addAttribute("leadsCount",leadService.findAllLeads(pageable).getTotalElements());
         model.addAttribute("customersCount",customerService.countByConverted(true));
-
         return "dashboard.html";
     }
 

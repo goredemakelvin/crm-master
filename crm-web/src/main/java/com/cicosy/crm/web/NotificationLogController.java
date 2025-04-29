@@ -24,7 +24,7 @@ public class NotificationLogController {
     @GetMapping("/notification-log-list")
     public String getPaginatedOpportunities(Model model,
                                             @RequestParam(defaultValue = "0") int page,
-                                            @RequestParam(defaultValue = "50") int size,
+                                            @RequestParam(defaultValue = "20") int size,
                                             @RequestParam(defaultValue = "id") String sortBy
 
     ) {

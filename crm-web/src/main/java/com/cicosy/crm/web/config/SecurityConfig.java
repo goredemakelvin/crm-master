@@ -25,13 +25,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/login", "/css/**", "/js/**","/register").permitAll()
+                .requestMatchers("/login", "/assets/css/**", "/assets/js/**","/assets/images/**","/register").permitAll()
                     .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")
                 .defaultSuccessUrl("/home", true)
+                    .failureUrl("/login?error=true")
                 .permitAll()
             ).userDetailsService(userDetailsService)
             .logout(logout -> logout
@@ -40,17 +41,6 @@ public class SecurityConfig {
             );
         return http.build();
     }
-
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        return new InMemoryUserDetailsManager(
-//            User.withUsername("admin")
-//                .password("{noop}password")
-//                .roles("USER")
-//                .build()
-//        );
-//    }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {

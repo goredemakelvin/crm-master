@@ -58,7 +58,7 @@ public class CustomerController {
     @GetMapping("/customer-list")
     public String getPaginatedCustomers(Model model,
                                         @RequestParam(defaultValue = "0") int page,
-                                        @RequestParam(defaultValue = "5") int size,
+                                        @RequestParam(defaultValue = "20") int size,
                                         @RequestParam(defaultValue = "id") String sortBy
 
 

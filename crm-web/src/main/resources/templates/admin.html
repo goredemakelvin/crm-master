@@ -16,36 +16,33 @@
 <div class="container mt-3">
     <h2>Admin Page</h2>
     <p>This page is designed for configurations</p>
-    <table class="table">
-        <thead class="table-dark">
-        <tr>
+    <table class="table table-bordered">
+        <tr class="table-light">
             <th>City</th>
             <th>Country</th>
             <th>Industry</th>
             <th>Contact Persons</th>
-            <th>Lead Segments</th>
-            <th>Promotion Messages</th>
-            <th>User Roles</th>
         </tr>
-        </thead>
-        <tbody>
-
-        <tbody>
-        <tr >
+        <tr>
             <td><a th:href="@{/city-list}">Cities</a></td>
             <td><a th:href="@{/country-list}">Countries</a></td>
             <td><a th:href="@{/industry-list}">Industries</a></td>
             <td><a th:href="@{/contact-list}">Contact Persons</a></td>
+        </tr>
+        <tr class="table-light">
+            <th>Lead Segments</th>
+            <th>Promotion Messages</th>
+            <th>User Roles</th>
+            <th>User Roles</th>
+        </tr>
+        <tr>
             <td><a th:href="@{/lead-segment-list}">Lead Segments</a></td>
             <td><a th:href="@{/promotion-message-list}">Promotion Message</a></td>
             <td><a th:href="@{/admin/users}">User Roles</a></td>
+            <td></td>
         </tr>
-        </tr>
-        </tbody>
     </table>
 </div>
-
-
 <!-- Footer -->
 <div th:replace="/fragments/footer :: footer"></div>
 <!-- /footer -->

@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ObjectUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -32,17 +31,17 @@ public class CityController {
 
     @PostMapping("/save-city")
     public String saveCity(@Valid @ModelAttribute("city") CityData cityData,
-                               BindingResult result, Model model,
-                               RedirectAttributes redirectAttributes) {
+                           BindingResult result, Model model,
+                           RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             model.addAttribute("errorMessage", result.getAllErrors().toString());
             return "city-form.html";
         }
         City city = null;
-        if(cityData.getId() == null) {
+        if (cityData.getId() == null) {
             city = new City();
-        }else{
-        Optional<City> optionalCity = cityService.findById(cityData.getId());
+        } else {
+            Optional<City> optionalCity = cityService.findById(cityData.getId());
             city = optionalCity.get();
         }
         city.setName(cityData.getName());
@@ -55,9 +54,9 @@ public class CityController {
 
     @GetMapping("/city-list")
     public String getPaginatedCities(Model model,
-                                        @RequestParam(defaultValue = "0") int page,
-                                        @RequestParam(defaultValue = "5") int size,
-                                        @RequestParam(defaultValue = "id") String sortBy
+                                     @RequestParam(defaultValue = "0") int page,
+                                     @RequestParam(defaultValue = "5") int size,
+                                     @RequestParam(defaultValue = "id") String sortBy
 
     ) {
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());

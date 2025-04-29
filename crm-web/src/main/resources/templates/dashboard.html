@@ -19,25 +19,25 @@
 <div class="container mt-3">
     <div class="row">
         <div class="col-sm-3">
-            <h3>Total Leads</h3>
+            <h5>Total Leads</h5>
             <div class="card bg-primary text-white">
                 <div class="card-body"><span th:text="${leadsCount}"></span></div>
             </div>
         </div>
         <div class="col-sm-3">
-            <h3>Total Customers</h3>
+            <h5>Total Customers</h5>
             <div class="card bg-secondary text-white">
                 <div class="card-body"><span th:text="${customersCount}"></span></div>
             </div>
         </div>
         <div class="col-sm-3">
-            <h3>Messages Received</h3>
+            <h5>Messages Received</h5>
             <div class="card bg-warning text-white">
-            <div class="card-body">Basic card</div>
+                <div class="card-body">Basic card</div>
             </div>
         </div>
         <div class="col-sm-3">
-            <h3>Messages Sent</h3>
+            <h5>Messages Sent</h5>
             <div class="card bg-info text-white">
                 <div class="card-body">Basic card</div>
             </div>
@@ -45,60 +45,64 @@
     </div>
     <div class="row">
         <h3>Leads</h3>
-            <table class="table">
-                <thead class="table-dark">
-                <tr>
-                    <th>ID</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Company Name</th>
-                    <th>Lead Score</th>
-                    <th>Job Title</th>
-                    <th>City</th>
-                    <th>Country</th>
-                    <th>Lead Source</th>
-                    <th>Preferred Contact Method</th>
-                    <th>Contact Sales Person</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <tbody>
-                <tr th:each="lead : ${leadsPage.content}">
-                    <td><a th:text="${lead.id}" th:href="@{/lead/{id}(id=${lead.id})}"></a></td>
-                    <td th:text="${lead.fullName}"></td>
-                    <td th:text="${lead.emailAddress}"></td>
-                    <td th:text="${lead.phoneNumber}"></td>
-                    <td th:text="${lead.company}"></td>
-                    <td th:text="${lead.leadScore}"></td>
-                    <td th:text="${lead.jobTitle}"></td>
-                    <td th:text="${lead.city}"></td>
-                    <td th:text="${lead.country}"></td>
-                    <td th:text="${lead.leadSource}"></td>
-                    <td th:text="${lead.preferedContact}"></td>
-                    <td th:text="${lead.contactPerson}"></td>
-                    <td><div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+        <table class="table table-bordered">
+            <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Company Name</th>
+                <th>Lead Score</th>
+                <th>Job Title</th>
+                <th>City</th>
+                <th>Country</th>
+                <th>Lead Source</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lead : ${leadsPage.content}">
+                <td><a th:text="${lead.id}" th:href="@{/lead/{id}(id=${lead.id})}"></a></td>
+                <td th:text="${lead.fullName}"></td>
+                <td th:text="${lead.emailAddress}"></td>
+                <td th:text="${lead.phoneNumber}"></td>
+                <td th:text="${lead.company}"></td>
+                <td th:text="${lead.leadScore}"></td>
+                <td th:text="${lead.jobTitle}"></td>
+                <td th:text="${lead.city}"></td>
+                <td th:text="${lead.country}"></td>
+                <td th:text="${lead.leadSource}"></td>
+                <td>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
                             Actions
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item"  th:href="@{/assign-lead/{id}(id=${lead.id})}">Assign Sales Person</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item"  th:href="@{/convert-lead/{id}(id=${lead.id})}">Convert To Customer</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item"  th:href="@{/lead-profile/{id}(id=${lead.id})}">Lead Profile</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" th:href="@{/assign-lead/{id}(id=${lead.id})}">Assign Sales
+                                Person</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" th:href="@{/convert-lead/{id}(id=${lead.id})}">Convert To
+                                Customer</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" th:href="@{/lead-profile/{id}(id=${lead.id})}">Lead Profile</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li><a class="dropdown-item" href="#">Link 2</a></li>
                             <li><a class="dropdown-item" href="#">Link 3</a></li>
                             <li><a class="dropdown-item" href="#">Another link</a></li>
                         </ul>
-                    </div></td>
-                </tr>
-                </tbody>
-            </table>
-
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
             <ul class="pagination">
                 <li class="page-item">
                     <a class="page-link" th:if="${currentPage > 0}"
@@ -123,18 +127,8 @@
                                          th:href="@{/dashboard(page=${totalPages - 1}, size=${leadsPage.size})}">Last</a>
                 </li>
             </ul>
-        </div>
-
-    </div>
-
-</div>
-
-
 <!-- Footer -->
 <div th:replace="/fragments/footer :: footer"></div>
 <!-- /footer -->
-
-</div>
-
 </body>
 </html>
