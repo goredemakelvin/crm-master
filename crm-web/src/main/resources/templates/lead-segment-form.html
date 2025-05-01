@@ -15,10 +15,11 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Lead Segment Form</h2>
+    <div class="row">
+    <a th:href="@{/communication-management}"><i class="bi bi-arrow-left-circle">Back</i></a>
+    <h4>Lead Segment Form</h4>
     <form th:action="@{/save-lead-segment}" th:object="${leadSegment}" method="POST">
             <input th:field="*{id}" type="hidden" class="form-control" id="id" name="id" readonly="readonly">
-
         <div class="mb-3 mt-3">
             <label for="name">Name:</label>
             <input th:field="*{name}" type="text" class="form-control" id="name" name="name">
@@ -34,10 +35,10 @@
             <label for="currentNotificationCount">Current Notification Count:</label>
             <input th:field="*{currentNotificationCount}" type="number" class="form-control" id="currentNotificationCount" name="currentNotificationCount" disabled>
         </div>
-
-        <button type="button" class="btn btn-danger">Cancel</button>
+<!--        <button type="button" class="btn btn-danger">Cancel</button>-->
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+</div>
 </div>
 
 <!-- Footer -->

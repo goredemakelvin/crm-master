@@ -42,18 +42,7 @@ public class PromotionMessageController {
             model.addAttribute("errorMessage", result.getAllErrors().toString());
             return "promotion-message-form.html";
         }
-        PromotionMessage message = null;
-        if (promotionMessage.getId() != null) {
-            Optional<PromotionMessage> optionalSegment = promotionMessageService.findById(promotionMessage.getId());
-            message = optionalSegment.get();
-        } else {
-            message = new PromotionMessage();
-        }
-        message.setText(promotionMessage.getText());
-        message.setLeadSegment(promotionMessage.getLeadSegment());
-        message.setSubject(promotionMessage.getSubject());
-        message.setScheduleDay(promotionMessage.getScheduleDay());
-        promotionMessageService.save(message);
+        promotionMessageService.save(promotionMessage);
         redirectAttributes.addFlashAttribute("successMessage", "Lead Segment saved successfully!");
         return "redirect:/promotion-message-list";
     }

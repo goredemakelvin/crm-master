@@ -14,8 +14,8 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <a th:href="@{/admin}"><i class="material-icons" style="font-size:24px;color:red">arrow_back</i></a>
-    <h3>Lead Segment Page</h3>
+    <a th:href="@{/communication-management}"><i class="material-icons" style="font-size:24px;color:red">arrow_back</i></a>
+    <h4>Lead Segment Page</h4>
     <nav class="nav ">
         <a class="nav-link" th:href="@{/lead-segment-form}">Lead Segment Form</a>
     </nav>
@@ -24,6 +24,10 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
+            <th>Max Notification Count</th>
+            <th>Current Notification Count</th>
+            <th>Created Date</th>
+            <th>Created By</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +36,11 @@
         <tr th:if="${leadSegmentPage != null}"  th:each="leadSegment : ${leadSegmentPage.content}">
             <td><a th:text="${leadSegment.id}" th:href="@{/lead-segment/{id}(id=${leadSegment.id})}"></a></td>
             <td th:text="${leadSegment.name}"></td>
+            <td th:text="${leadSegment.maxNotificationCount}"></td>
+            <td th:text="${leadSegment.currentNotificationCount}"></td>
+            <td th:text="${leadSegment.createdDate}"></td>
+            <td th:text="${leadSegment.createdBy}"></td>
+
         </tr>
         </tbody>
     </table>

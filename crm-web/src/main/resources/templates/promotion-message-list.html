@@ -17,6 +17,9 @@
         <thead class="table-light">
         <tr>
             <th>ID</th>
+            <th>Subject</th>
+            <th>Schedule Day</th>
+            <th>Lead Segment</th>
             <th>Text</th>
         </tr>
         </thead>
@@ -25,6 +28,9 @@
         <tbody>
         <tr th:if="${promotionMessagePage != null}"  th:each="message : ${promotionMessagePage.content}">
             <td><a th:text="${message.id}" th:href="@{/promotion-message/{id}(id=${message.id})}"></a></td>
+            <td th:text="${message.subject}"></td>
+            <td th:text="${message.scheduleDay}"></td>
+            <td th:text="${message?.leadSegment?.name}"></td>
             <td th:text="${message.text}"></td>
         </tr>
         </tbody>

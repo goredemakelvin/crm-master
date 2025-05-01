@@ -15,17 +15,18 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Promotion Message Form</h2>
+    <a th:href="@{/communication-management}"><i class="material-icons" style="font-size:24px;color:red">arrow_back</i></a>
+    <h4>Promotion Message Form</h4>
     <form th:action="@{/save-promotion-message}" th:object="${promotionMessage}" method="POST">
             <input th:field="*{id}" type="hidden" class="form-control" id="id" name="id" readonly="readonly">
 
         <div class="mb-3 mt-3">
             <label for="subject">Subject:</label>
-            <input th:field="*{subject}" type="subject" class="form-control" id="subject" name="subject">
+            <input th:field="*{subject}" type="text" class="form-control" id="subject" name="subject">
         </div>
         <div class="mb-3 mt-3">
             <label for="scheduleDay">Schedule Day:</label>
-            <input th:field="*{scheduleDay}" type="scheduleDay" class="form-control" id="scheduleDay" name="scheduleDay">
+            <input th:field="*{scheduleDay}" type="text" class="form-control" id="scheduleDay" name="scheduleDay">
         </div>
 
         <div class="mb-3 mt-3">
@@ -46,9 +47,6 @@
             <label for="text">Name:</label>
             <textarea rows = "20" cols = "80" th:field="*{text}" class="form-control" id="text"></textarea>
         </div>
-
-
-        <button type="button" class="btn btn-danger">Cancel</button>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

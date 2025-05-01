@@ -46,6 +46,8 @@ public class LeadSegmentController {
             segment = new LeadSegment();
         }
         segment.setName(leadSegment.getName());
+        segment.setMaxNotificationCount(leadSegment.getMaxNotificationCount());
+        segment.setCurrentNotificationCount(leadSegment.getCurrentNotificationCount());
         leadSegmentService.save(segment);
         redirectAttributes.addFlashAttribute("successMessage", "Lead Segment saved successfully!");
         return "redirect:/lead-segment-list";
