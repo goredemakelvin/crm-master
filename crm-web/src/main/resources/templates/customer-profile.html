@@ -14,11 +14,11 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h3>Customer Page</h3>
-    <div class="card" style="width:400px">
+    <a th:href="@{/customer-management}"><i class="bi bi-arrow-left-circle">Back</i></a>
+    <h4 th:text="${customer.firstName} +' '+ ${customer.lastName}" class="card-title"></h4>
+    <div class="card" style="width:100px">
         <img class="card-img-top" th:src="@{/assets/images/img_avatar.png}" alt="Card image" style="width:100%">
         <div class="card-body">
-            <h4 th:text="${customer.firstName} +' '+ ${customer.lastName}" class="card-title"></h4>
             <p class="card-text"> 5564</p>
         </div>
     </div>
