@@ -39,6 +39,7 @@ public class LeadData {
     private double companySize;
     private long leadScore;
     private String contactPerson;
+    private String leadStage;
 
 
     public LeadData getLeadData(Lead lead) {
@@ -91,6 +92,9 @@ public class LeadData {
                 leadData.setContactPerson(contactPerson);
             }
 
+            if(lead.getLeadStage()!= null) {
+                leadData.setLeadStage(lead.getLeadStage().toString());
+            }
 
         }
         return leadData;

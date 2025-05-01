@@ -1,9 +1,6 @@
 package com.cicosy.crm.service;
 
-import com.cicosy.crm.entity.Account;
-import com.cicosy.crm.entity.Contact;
-import com.cicosy.crm.entity.Lead;
-import com.cicosy.crm.entity.Opportunity;
+import com.cicosy.crm.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +17,9 @@ public class LeadConversionServiceImpl  implements LeadConversionService {
     private OpportunityService opportunityService;
 
     @Override
-    public void convertLead(Lead lead,int stage) {
+    public void convertLead(Lead lead) {
 
-        if(stage == 1) {
+        if(lead.getLeadStage().equals(LeadStage.ACCOUNT)) {
             Account account = new Account();
             account.setAccountNumber("1L");
             if(lead.getCustomer() != null) {
@@ -32,7 +29,7 @@ public class LeadConversionServiceImpl  implements LeadConversionService {
             accountService.save(account);
         }
 
-        if (stage == 2) {
+        if (lead.getLeadStage().equals(LeadStage.CONTACT)) {
             Contact contact = new Contact();
             contact.setLead(lead);
             if(lead.getCustomer() != null) {
@@ -41,7 +38,7 @@ public class LeadConversionServiceImpl  implements LeadConversionService {
             contactService.save(contact);
         }
 
-        if(stage == 3) {
+        if(lead.getLeadStage().equals(LeadStage.OPPORTUNITY)) {
             Opportunity opportunity = new Opportunity();
             opportunity.setLead(lead);
             if(lead.getCustomer() != null) {

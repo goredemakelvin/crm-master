@@ -1,6 +1,7 @@
 package com.cicosy.crm.web;
 
 import com.cicosy.crm.data.LeadData;
+import com.cicosy.crm.entity.LeadStage;
 import com.cicosy.crm.service.LeadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +30,7 @@ public class LeadController {
             return lead.getLeadData(item);
         });
         model.addAttribute("leadsPage", leadsPage);
+        model.addAttribute("leadStages", LeadStage.values());
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", leadsPage.getTotalPages());
         model.addAttribute("sortBy", sortBy);

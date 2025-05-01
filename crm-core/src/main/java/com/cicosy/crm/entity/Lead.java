@@ -1,8 +1,6 @@
 package com.cicosy.crm.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,6 +31,9 @@ public class Lead extends BaseEntity {
 
     @ManyToOne
     private LeadSegment leadSegment;
+
+    @Enumerated(EnumType.STRING) // Stores as "USER", "ADMIN", etc.
+    private LeadStage leadStage;
 
 
 

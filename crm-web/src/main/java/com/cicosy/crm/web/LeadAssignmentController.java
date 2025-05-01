@@ -1,18 +1,21 @@
 package com.cicosy.crm.web;
 
+import com.cicosy.crm.data.LeadConversionForm;
 import com.cicosy.crm.entity.Customer;
 import com.cicosy.crm.entity.Lead;
+import com.cicosy.crm.entity.LeadStage;
 import com.cicosy.crm.service.ContactPersonService;
 import com.cicosy.crm.service.CustomerService;
+import com.cicosy.crm.service.LeadConversionService;
 import com.cicosy.crm.service.LeadService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
@@ -26,6 +29,8 @@ public class LeadAssignmentController {
     private ContactPersonService contactPersonService;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private LeadConversionService leadConversionService;
 
     @GetMapping("/assign-lead/{id}")
     public String leadForm(@PathVariable Long id, Model model) {
@@ -71,7 +76,38 @@ public class LeadAssignmentController {
 
     }
 
+    @RequestMapping(
+            path = "/convert-lead",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+            produces = {
+                    MediaType.APPLICATION_ATOM_XML_VALUE,
+                    MediaType.APPLICATION_JSON_VALUE
+            })
+    public String convertLead(LeadConversionForm form, Model model, RedirectAttributes redirectAttributes) {
 
+
+//        if (paramMap == null &&
+//                paramMap.get("password") == null) {
+//
+//
+//        }
+//        String leadStage = (String)paramMap.get("leadStage");
+//        Long leadId = (Long)paramMap.get("leadId");
+
+        Optional<Lead> optionalLead = leadService.findById(form.getId());
+        if (optionalLead.isPresent()) {
+            Lead leadSaved = optionalLead.get();
+            leadSaved.setLeadStage(LeadStage.valueOf(form.getLeadStage()));
+            leadService.save(leadSaved);
+            leadConversionService.convertLead(leadSaved);
+            leadSaved.setConverted(true);
+
+        }
+        redirectAttributes.addFlashAttribute("successMessage", "Lead conversion successful!");
+        return "redirect:/dashboard";
+
+    }
 
     @GetMapping("/lead-profile/{id}")
     public String leadPage(@PathVariable Long id, Model model) {
