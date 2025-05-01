@@ -14,12 +14,13 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Lead Segment Page</h2>
-    <p><a href="#" class="link-underline-primary" th:href="@{/lead-segment-form}">Add Lead Segment</a></p>
-
-    <p>This page shows  lead segment captured by the system</p>
+    <a th:href="@{/admin}"><i class="material-icons" style="font-size:24px;color:red">arrow_back</i></a>
+    <h3>Lead Segment Page</h3>
+    <nav class="nav ">
+        <a class="nav-link" th:href="@{/lead-segment-form}">Lead Segment Form</a>
+    </nav>
     <table class="table">
-        <thead class="table-dark">
+        <thead class="table-light">
         <tr>
             <th>ID</th>
             <th>Name</th>

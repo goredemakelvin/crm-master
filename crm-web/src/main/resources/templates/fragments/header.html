@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="header">
 <head>
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
@@ -13,10 +13,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Toastr JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-<div th:fragment="header">
-
+<div >
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand"  th:href="@{/}">
@@ -25,13 +25,13 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sales And Orders</a>
+                    <a class="nav-link"  th:href="@{/sales-management}">Sales And Orders</a>
                 </li>
                 <li class="nav-item">
-                    <a  th:href="@{/business-info-list}"   class="nav-link" href="#">Business Information</a>
+                    <a  th:href="@{/business-management}"   class="nav-link" href="#">Business Information</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/notification-log-list}">Marketing and Communication</a>
+                    <a class="nav-link" th:href="@{/communication-management}">Marketing and Communication</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Customer Support and Services </a>
@@ -40,23 +40,11 @@
                 <li class="nav-item">
                     <a th:href="@{/admin}" class="nav-link" href="#">Admin</a>
                 </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Customer</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/customer}">New Customers</a></li>
-                        <li><a class="dropdown-item" th:href="@{/customer-list}" href="#">Customer List</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a th:href="@{/lead-management}" class="nav-link" href="#">Lead Management</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Lead Management</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/lead-list}">Leads List</a></li>
-                        <li><a class="dropdown-item" th:href="@{/lead-upload}" href="#">Lead Upload</a></li>
-                        <li><a class="dropdown-item" th:href="@{/account-list}" href="#">Accounts</a></li>
-                        <li><a class="dropdown-item" th:href="@{/opportunity-list}" href="#">Opportunity</a></li>
-                        <li><a class="dropdown-item" th:href="@{/contact-lead-list}" href="#">Contact</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a th:href="@{/customer-management}" class="nav-link" href="#">Customer Management</a>
                 </li>
             </ul>
         </div>
@@ -84,12 +72,8 @@
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
-
-
     </div>
-
-
-
+</div>
 </div>
 </body>
 </html>

@@ -14,7 +14,8 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Accounts Page</h2>
+    <a th:href="@{/lead-management}"><i class="bi bi-arrow-left-circle">Back</i></a>
+    <h3>Accounts Page</h3>
 <!--    <p><a href="#" class="link-underline-primary" th:href="@{/city-form}">Add City</a></p>-->
     <table class="table table-bordered">
         <thead class="table-light">
@@ -24,7 +25,6 @@
         </tr>
         </thead>
         <tbody>
-
         <tbody>
         <tr th:if="${accountPage != null}"  th:each="account : ${accountPage.content}">
 <!--            <td><a th:text="${city.id}" th:href="@{/city/{id}(id=${city.id})}"></a></td>-->

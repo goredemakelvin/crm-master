@@ -14,9 +14,11 @@
 <!-- /main navbar -->
 
 <div class="container mt-3">
-    <h2>Contact Persons Page</h2>
-    <p><a href="#" class="link-underline-primary" th:href="@{/contact-form}">Add Contact Person</a></p>
-    <p>This page shows  contact persons who will assist in lead management</p>
+    <a th:href="@{/admin}"><i class="material-icons" style="font-size:24px;color:red">arrow_back</i></a>
+    <h3>Contact Persons Page</h3>
+    <nav class="nav ">
+        <a class="nav-link" th:href="@{/contact-form}">Contact Form</a>
+    </nav>
     <table class="table table-bordered">
         <thead class="table-light">
         <tr>
