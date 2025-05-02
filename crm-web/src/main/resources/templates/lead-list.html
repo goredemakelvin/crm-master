@@ -25,6 +25,7 @@
             <th>City</th>
             <th>Country</th>
             <th>Lead Source</th>
+            <th>Contact Person</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -40,14 +41,22 @@
             <td th:text="${lead.city}"></td>
             <td th:text="${lead.country}"></td>
             <td th:text="${lead.leadSource}"></td>
+            <td th:text="${lead.contactPerson}"></td>
             <td>
                 <div class="dropdown">
                     <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
                         Actions
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" th:href="@{/assign-lead/{id}(id=${lead.id})}">Assign Sales
-                            Person</a></li>
+                        <li>
+<!--                            <a class="dropdown-item" th:href="@{/assign-lead/{id}(id=${lead.id})}">Assign Sales-->
+<!--                            Person</a>-->
+                            <a class="dropdown-item" href="#"
+                               data-bs-toggle="modal"
+                               data-bs-target="#contactPersonModal"
+                               th:attr="data-id=${lead.id},data-name=${lead.fullName}">Assign Contact Person</a>
+
+                        </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -65,6 +74,9 @@
                                data-bs-toggle="modal"
                                data-bs-target="#editUserModal"
                                th:attr="data-id=${lead.id},data-name=${lead.fullName}, data-lead-stage=${lead.leadStage}">Lead Conversion</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="#">Link 3</a></li>
                         <li><a class="dropdown-item" href="#">Another link</a></li>
                     </ul>
@@ -142,6 +154,53 @@
             // document.getElementById('userRole').value = button.getAttribute('data-role');
         });
     </script>
+
+
+    <div class="modal fade" id="contactPersonModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <form class="modal-content" method="post" th:action="@{/assign-contact-person}">
+                <input type="hidden" name="leadContactId" id="leadContactId">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Assign Contact Person</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label>Name</label>
+                        <input type="text" class="form-control" name="leadFullName" id="leadFullName" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="leadContactPerson" class="form-label">Lead Contact Person</label>
+                        <select name="leadContactPerson" id="leadContactPerson" class="form-select">
+                            <option value="">-- Select Contact Person --</option>
+                            <option th:each="item : ${contactPersons}"
+                                    th:value="${item.id}"
+                                    th:text="${item.getFirstName()}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const assignContactPersonModal = document.getElementById('contactPersonModal');
+        assignContactPersonModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            document.getElementById('leadContactId').value = button.getAttribute('data-id');
+            document.getElementById('leadFullName').value = button.getAttribute('data-name');
+            // document.getElementById('leadStage').value = button.getAttribute('data-lead-stage');
+            // document.getElementById('userRole').value = button.getAttribute('data-role');
+        });
+    </script>
+
 
 
     <!-- Footer -->

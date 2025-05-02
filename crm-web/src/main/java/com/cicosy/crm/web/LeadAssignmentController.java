@@ -1,6 +1,8 @@
 package com.cicosy.crm.web;
 
+import com.cicosy.crm.data.ContactPersonForm;
 import com.cicosy.crm.data.LeadConversionForm;
+import com.cicosy.crm.entity.ContactPerson;
 import com.cicosy.crm.entity.Customer;
 import com.cicosy.crm.entity.Lead;
 import com.cicosy.crm.entity.LeadStage;
@@ -13,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -72,40 +73,44 @@ public class LeadAssignmentController {
             leadService.save(leadSaved);
         }
         redirectAttributes.addFlashAttribute("successMessage", "Lead conversion successful!");
-        return "redirect:/dashboard";
+        return "redirect:/lead-list";
+
+    }
+
+    @RequestMapping(
+            path = "/assign-contact-person",
+            method = RequestMethod.POST,
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String assignContactPersons(ContactPersonForm form, Model redirectAttributes) {
+        Optional<Lead> optionalLead = leadService.findById(form.getLeadContactId());
+        if (optionalLead.isPresent()) {
+            Lead leadSaved = optionalLead.get();
+            Optional<ContactPerson> contactPerson = contactPersonService.findById(form.getLeadContactPerson());
+            if (contactPerson.isPresent()) {
+                leadSaved.setContactPerson(contactPerson.get());
+                leadService.save(leadSaved);
+            }
+        }
+        redirectAttributes.addAttribute("successMessage", "Lead assignment successful!");
+        return "redirect:/lead-list";
 
     }
 
     @RequestMapping(
             path = "/convert-lead",
             method = RequestMethod.POST,
-            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
-            produces = {
-                    MediaType.APPLICATION_ATOM_XML_VALUE,
-                    MediaType.APPLICATION_JSON_VALUE
-            })
+            consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public String convertLead(LeadConversionForm form, Model model, RedirectAttributes redirectAttributes) {
-
-
-//        if (paramMap == null &&
-//                paramMap.get("password") == null) {
-//
-//
-//        }
-//        String leadStage = (String)paramMap.get("leadStage");
-//        Long leadId = (Long)paramMap.get("leadId");
-
         Optional<Lead> optionalLead = leadService.findById(form.getId());
         if (optionalLead.isPresent()) {
             Lead leadSaved = optionalLead.get();
             leadSaved.setLeadStage(LeadStage.valueOf(form.getLeadStage()));
+            leadSaved.setConverted(true);
             leadService.save(leadSaved);
             leadConversionService.convertLead(leadSaved);
-            leadSaved.setConverted(true);
-
         }
         redirectAttributes.addFlashAttribute("successMessage", "Lead conversion successful!");
-        return "redirect:/dashboard";
+        return "redirect:/lead-list";
 
     }
 
