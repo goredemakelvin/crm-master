@@ -24,5 +24,8 @@ public class NotificationLog  extends BaseEntity{
     private Opportunity opportunity;
     @ManyToOne
     private Contact contact;
+    private boolean sent;
+    private boolean delivered;
+    private String channel;
 
 }

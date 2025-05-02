@@ -24,6 +24,9 @@
             <th>Message</th>
             <th>Date Created</th>
             <th>Recipient</th>
+            <th>Sent</th>
+            <th>Delivered</th>
+            <th>Channel</th>
         </tr>
         </thead>
         <tbody>
@@ -35,6 +38,9 @@
             <td th:text="${log.promotionMessage.text}"></td>
             <td th:text="${log.promotionMessage.createdDate}"></td>
             <td th:text="${log.lead.customer.firstName}"></td>
+            <td th:text="${log.sent}"></td>
+            <td th:text="${log.delivered}"></td>
+            <td th:text="${log.channel}"></td>
 <!--            <td th:text="${account.accountNumber}"></td>-->
         </tr>
         </tbody>
