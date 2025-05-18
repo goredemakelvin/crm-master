@@ -56,4 +56,40 @@ public class ExcelHelper {
         }
 
     }
+
+    public void readCustomerExcel(MultipartFile file) {
+        try (InputStream is = file.getInputStream(); Workbook workbook = new XSSFWorkbook(is)) {
+            Sheet sheet = workbook.getSheetAt(0);
+            boolean headerRow = true;
+
+            for (Row row : sheet) {
+                if (headerRow) {
+                    headerRow = false;
+                    continue; // skip header
+                }
+
+                LeadData lead = new LeadData();
+                String firstName = row.getCell(0).getStringCellValue();
+                String lastName = row.getCell(1).getStringCellValue();
+                String email = row.getCell(2).getStringCellValue();
+                String phonenumber = row.getCell(3).getStringCellValue();
+                String companyName = row.getCell(4).getStringCellValue();
+                double companySize = row.getCell(5).getNumericCellValue();
+                double customer = row.getCell(6).getNumericCellValue();
+                lead.setFirstName(firstName);
+                lead.setLastName(lastName);
+                lead.setPhoneNumber(phonenumber);
+                lead.setEmailAddress(email);
+                lead.setCompany(companyName);
+                lead.setCompanySize(companySize);
+                lead.setCustomer(customer);
+                leadService.createLead(lead);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error(e.getMessage());
+        }
+
+    }
 }

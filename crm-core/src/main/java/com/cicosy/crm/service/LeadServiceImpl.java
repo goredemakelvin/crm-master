@@ -91,6 +91,15 @@ public class LeadServiceImpl extends LeadService {
         if(leadData.getCompanySize()>0){
             leadScoreService.assignScore(leadData, lead);
         }
+        if(leadData.getCustomer()==1){
+            lead.setConverted(true);
+            customer.setConverted(true);
+            customerRepository.save(customer);
+            leadRepository.save(lead);
+        }else{
+            lead.setLeadStage(LeadStage.OPPORTUNITY);
+            leadRepository.save(lead);
+        }
 
        return lead;
     }

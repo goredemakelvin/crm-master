@@ -40,6 +40,7 @@ public class LeadData {
     private long leadScore;
     private String contactPerson;
     private String leadStage;
+    private double customer;
 
 
     public LeadData getLeadData(Lead lead) {
