@@ -7,7 +7,9 @@ public interface EmailService {
 
     String sendSimpleMail(EmailTemplate details);
 
-    // Method
-    // To send an email with attachment
-    String sendMailWithAttachment(EmailTemplate details);
+    String sendEmailWithAttachment(EmailTemplate details);
+
+    String sendSimpleEmailV2(EmailTemplate details);
+
+    public void sendEmailWithAttachmentV2(EmailTemplate emailTemplate) throws Exception;
 }

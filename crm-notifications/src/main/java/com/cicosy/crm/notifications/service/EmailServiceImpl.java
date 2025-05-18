@@ -51,7 +51,7 @@ public class EmailServiceImpl implements EmailService {
 
     // Method 2
     // To send an email with attachment
-    public String sendMailWithAttachment(EmailTemplate details) {
+    public String sendEmailWithAttachment(EmailTemplate details) {
         // Creating a mime message
         MimeMessage mimeMessage
                 = javaMailSender.createMimeMessage();
@@ -89,4 +89,16 @@ public class EmailServiceImpl implements EmailService {
             return "Error while sending mail!!!";
         }
     }
+
+    @Override
+    public String sendSimpleEmailV2(EmailTemplate details) {
+        return "";
+    }
+
+    @Override
+    public void sendEmailWithAttachmentV2(EmailTemplate emailTemplate) throws Exception {
+
+    }
+
+
 }
