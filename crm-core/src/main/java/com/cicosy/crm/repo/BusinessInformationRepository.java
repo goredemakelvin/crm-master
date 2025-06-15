@@ -8,10 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface BusinessInformationRepository extends JpaRepository<BusinessInformation, Long> {
-
-    Optional<BusinessInformation> findByCustomer(Customer customer);
+public interface BusinessInformationRepository extends JpaRepository<BusinessInformation, Long> { ;
 
     Page<BusinessInformation> findAll(Pageable pageable);
-
+    Optional<BusinessInformation> findByCompanyName(String companyName);
 }

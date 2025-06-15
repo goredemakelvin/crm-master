@@ -76,7 +76,7 @@ public class LeadData {
                 String[] phoneNumbers = phones.stream().map(String::valueOf).toArray(String[]::new);
                 int i = 0;
                 for (Phone e : phones) {
-                    phoneNumbers[i++] = e.getPhoneNumber();
+                    phoneNumbers[i++] = e.getPhoneNumber1();
                 }
                 leadData.setPhoneNumber(Arrays.toString(phoneNumbers));
             }

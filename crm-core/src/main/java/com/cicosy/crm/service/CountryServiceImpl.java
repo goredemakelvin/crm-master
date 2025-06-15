@@ -34,4 +34,10 @@ public class CountryServiceImpl extends CountryService{
     public Page<Country> findAllCountries(Pageable pageable) {
         return countryRepository.findAll(pageable);
     }
+
+    @Override
+    public Optional<Country> findByName(String name) {
+        return countryRepository.findByNameLike(name);
+
+    }
 }

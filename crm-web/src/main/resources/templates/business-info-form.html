@@ -17,7 +17,7 @@
 <div class="container mt-3">
     <h2>Customer Business Information Form </h2>
     <form th:action="@{/save-business-info}" th:object="${businessInformation}" method="POST">
-        <input th:field="*{customerId}" type="hidden">
+        <input th:field="*{id}" type="hidden">
         <div class="mb-3 mt-3">
             <label for="companyName">Company Name:</label>
             <input th:field="*{companyName}" type="text" class="form-control" id="companyName" name="companyName">

@@ -26,7 +26,7 @@ public class CustomerProfileController {
         Optional<Customer> optionalCustomer = customerService.findById(id);
         if (optionalCustomer.isPresent()) {
             model.addAttribute("customer", optionalCustomer.get());
-            Optional<BusinessInformation> optionalBusinessInformation = businessInformationService.findByCustomer(optionalCustomer.get());
+            Optional<BusinessInformation> optionalBusinessInformation = Optional.empty();
             if (optionalBusinessInformation.isPresent()) {
                 CustomerInformationData c=new CustomerInformationData();
                 BusinessInformationData b=new BusinessInformationData();

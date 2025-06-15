@@ -71,7 +71,7 @@ public class LeadServiceImpl extends LeadService {
 
 
         Phone phone = new Phone();
-        phone.setPhoneNumber(leadData.getPhoneNumber());
+        phone.setPhoneNumber1(leadData.getPhoneNumber());
         phone.setCustomer(customer);
         phoneRepository.save(phone);
         customer.getPhoneNumbers().add(phone);
@@ -79,7 +79,7 @@ public class LeadServiceImpl extends LeadService {
 
         BusinessInformation businessInformation = new BusinessInformation();
         businessInformation.setCompanyName(leadData.getCompany());
-        businessInformation.setCustomer(customer);
+        //businessInformation.setCustomer(customer);
         businessInformationRepository.save(businessInformation);
         customer.setBusinessInformation(businessInformation);
         customerRepository.save(customer);

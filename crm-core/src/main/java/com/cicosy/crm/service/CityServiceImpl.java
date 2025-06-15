@@ -35,4 +35,9 @@ public class CityServiceImpl extends CityService{
     public Page<City> findAllCities(Pageable pageable) {
         return cityRepository.findAll(pageable);
     }
+
+    @Override
+    public Optional<City> findByName(String name) {
+        return  cityRepository.findByNameLike(name);
+    }
 }

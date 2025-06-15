@@ -51,7 +51,7 @@ public class BusinessInformationServiceImpl extends BusinessInformationService {
             Optional<Customer> optionalCustomer = customerService.findById(businessFormData.getCustomerId());
             if (optionalCustomer.isPresent()) {
                 Customer customer = optionalCustomer.get();
-                businessInformation.setCustomer(customer);
+                //businessInformation.setCustomer(customer);
             }
         }
         if (businessFormData.getCity() != null) {
@@ -83,10 +83,6 @@ public class BusinessInformationServiceImpl extends BusinessInformationService {
 
     }
 
-    @Override
-    public Optional<BusinessInformation> findByCustomer(Customer customer) {
-        return businessInformationRepository.findByCustomer(customer);
-    }
 
     @Override
     public Page<BusinessInformation> findAllBusinessInformation(Pageable pageable) {

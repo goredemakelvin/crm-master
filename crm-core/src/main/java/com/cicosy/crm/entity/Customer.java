@@ -3,7 +3,9 @@ package com.cicosy.crm.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -29,8 +31,10 @@ public class Customer extends BaseEntity {
     private Country country;
     @ManyToOne
     private BusinessInformation businessInformation;
-
     private boolean converted;
+    private LocalDate subscriptionDate;
+    private String website;
+    private String customerId;
 
 
 }

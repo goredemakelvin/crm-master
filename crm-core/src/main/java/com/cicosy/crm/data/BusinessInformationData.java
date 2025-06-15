@@ -27,7 +27,7 @@ public class BusinessInformationData {
                 this.accountManager=businessInformation.getAccountManager().getFirstName();
             }
 
-            this.customerId= businessInformation.getCustomer().getId();
+            //this.customerId= businessInformation.getCustomer().getId();
             return this;
         }
         return null;

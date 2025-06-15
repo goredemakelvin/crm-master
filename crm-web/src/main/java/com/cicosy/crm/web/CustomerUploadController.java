@@ -1,5 +1,6 @@
 package com.cicosy.crm.web;
 
+import com.cicosy.crm.web.util.CsvService;
 import com.cicosy.crm.web.util.ExcelHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ public class CustomerUploadController {
 
     @Autowired
     private ExcelHelper excelHelper;
+    @Autowired
+    private CsvService csvService;
 
 
     @GetMapping("/customer-upload")
@@ -24,7 +27,7 @@ public class CustomerUploadController {
     @PostMapping("/customer-upload")
     public String handleUpload(@RequestParam("file") MultipartFile file, Model model) {
 
-        excelHelper.readCustomerExcel(file);
+        csvService.parseCustomerData(file);
 
         return "redirect:/";
     }

@@ -64,7 +64,7 @@ public class CustomerInformationData {
             StringBuilder builder = new StringBuilder();
             builder.append("[");
             customer.getPhoneNumbers().forEach(item ->
-                    builder.append(item.getPhoneNumber()).append(","));
+                    builder.append(item.getPhoneNumber1()).append(","));
             builder.append("]");
             return builder.toString();
         } else {

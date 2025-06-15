@@ -22,8 +22,10 @@
             <th>ID</th>
             <th>Firstname</th>
             <th>Lastname</th>
-            <th>Customer Number</th>
+            <th>Email</th>
+            <th>Website</th>
             <th>City</th>
+            <th>Country</th>
         </tr>
         </thead>
         <tbody>
@@ -33,13 +35,16 @@
             <td><a th:text="${customer.id}" th:href="@{/customer/{id}(id=${customer.id})}"></a></td>
             <td th:text="${customer.firstName}"></td>
             <td th:text="${customer.lastName}"></td>
-            <td th:text="${customer.customerNumber}"></td>
+            <td th:text="${customer.emailAddress[0].email}"></td>
+            <td th:text="${customer.website}"></td>
             <td th:text="${customer?.city?.name}"></td>
+            <td th:text="${customer?.country?.name}"></td>
         </tr>
         </tbody>
     </table>
 
-    <ul class="pagination">
+    <nav th:if="${customerPage.totalPages > 1}">
+    <ul class="pagination flex-wrap">
         <li class="page-item">
             <a class="page-link" th:if="${currentPage > 0}"
                th:href="@{/customer-list(page=0, size=${customerPage.size})}">First</a></li>
@@ -63,6 +68,7 @@
                                  th:href="@{/customer-list(page=${totalPages - 1}, size=${customerPage.size})}">Last</a>
         </li>
     </ul>
+    </nav>
 </div>
 
 

@@ -26,8 +26,7 @@
             <th>Industry</th>
             <th>City</th>
             <th>Country</th>
-            <th>Customer</th>
-            <th>Company Size</th>
+            <th>Website</th>
         </tr>
         </thead>
         <tbody>
@@ -39,13 +38,12 @@
             <td th:text="${item?.industry?.name}"></td>
             <td th:text="${item?.city?.name}"></td>
             <td th:text="${item?.country?.name}"></td>
-            <td th:text="${item.customer.firstName}"></td>
-            <td th:text="${item.companySize}"></td>
+            <td th:text="${item.website}"></td>
         </tr>
         </tbody>
     </table>
 
-    <ul class="pagination">
+    <ul class="pagination flex-wrap">
         <li class="page-item">
             <a class="page-link" th:if="${businessInformationPage}"
                th:href="@{/business-info-list(page=0, size=${businessInformationPage.size})}">First</a></li>

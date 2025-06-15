@@ -1,6 +1,7 @@
 package com.cicosy.crm.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.*;
 
@@ -10,23 +11,18 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class BusinessInformation  extends BaseEntity{
+public class BusinessInformation extends BaseEntity {
 
     private String companyName;
-    @OneToOne
+    @ManyToOne
     private Industry industry;
-    @OneToOne
+    @ManyToOne
     private City city;
-    @OneToOne
+    @ManyToOne
     private Country country;
-
     private String jobTitle;
-
-    @OneToOne
+    @ManyToOne
     private ContactPerson accountManager;
-    @OneToOne
-    private Customer customer;
-
     private int companySize;
-
+    private String website;
 }

@@ -55,7 +55,7 @@ public class CityController {
     @GetMapping("/city-list")
     public String getPaginatedCities(Model model,
                                      @RequestParam(defaultValue = "0") int page,
-                                     @RequestParam(defaultValue = "5") int size,
+                                     @RequestParam(defaultValue = "50") int size,
                                      @RequestParam(defaultValue = "id") String sortBy
 
     ) {
