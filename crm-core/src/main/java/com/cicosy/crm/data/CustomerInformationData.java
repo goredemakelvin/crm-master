@@ -5,6 +5,8 @@ import com.cicosy.crm.entity.Customer;
 import lombok.Data;
 import org.springframework.util.ObjectUtils;
 
+import java.time.LocalDate;
+
 @Data
 public class CustomerInformationData {
 
@@ -17,6 +19,8 @@ public class CustomerInformationData {
     private Long id;
     private String customerNumber;
     private BusinessInformationData businessInformation;
+    private LocalDate subscriptionDate;
+    private String website;
 
 
 
@@ -27,11 +31,12 @@ public class CustomerInformationData {
             this.firstName = customer.getFirstName();
             this.lastName = customer.getLastName();
             this.id = customer.getId();
-            this.loyaltyPoints = getLoyaltyPoints(customer);
             this.emailAddresses = getEmailAddresses(customer);
             this.id = customer.getId();
             this.phoneNumbers = getPhoneNumbers(customer);
-            this.customerNumber = customer.getCustomerNumber();
+            this.customerNumber = customer.getCustomerId();
+            this.website=customer.getWebsite();
+            this.subscriptionDate = customer.getSubscriptionDate();
             return this;
 
         }
@@ -51,13 +56,6 @@ public class CustomerInformationData {
         }
     }
 
-    private int getLoyaltyPoints(Customer customer) {
-//        if (!ObjectUtils.isEmpty(customer.getLoyaltyPoints())) {
-//            return customer.getLoyaltyPoints().getPoints();
-//        } else {
-            return 0;
-      //  }
-    }
 
     private String getPhoneNumbers(Customer customer) {
         if (!ObjectUtils.isEmpty(customer.getPhoneNumbers())) {

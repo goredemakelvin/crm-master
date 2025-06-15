@@ -26,16 +26,16 @@ public class CustomerProfileController {
         Optional<Customer> optionalCustomer = customerService.findById(id);
         if (optionalCustomer.isPresent()) {
             model.addAttribute("customer", optionalCustomer.get());
+
+            BusinessInformation businessInformation = optionalCustomer.get().getBusinessInformation();
             Optional<BusinessInformation> optionalBusinessInformation = Optional.empty();
-            if (optionalBusinessInformation.isPresent()) {
                 CustomerInformationData c=new CustomerInformationData();
                 BusinessInformationData b=new BusinessInformationData();
                 CustomerInformationData customerInformation = c.getCustomerInformation(optionalCustomer.get());
-                BusinessInformationData businessInformation = b.getCustomerBusinessInformation(optionalBusinessInformation.get());
-                customerInformation.setBusinessInformation(businessInformation);
+                BusinessInformationData buzzdata = b.getCustomerBusinessInformation(businessInformation);
+                customerInformation.setBusinessInformation(buzzdata);
                 model.addAttribute("customerInformation",customerInformation);
-                model.addAttribute("businessInformation",businessInformation);
-            }
+                model.addAttribute("businessInformation",buzzdata);
 
         }
         return "customer-profile.html";

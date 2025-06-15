@@ -10,16 +10,19 @@
     <tr>
         <th>Phone Numbers</th>
         <th>Email Addresses</th>
-        <th>Loyalty Points</th>
         <th>Customer Number</th>
+        <th>Subcription Date</th>
+        <th>Website</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr th:if="${customerInformation != null}">
         <td><span th:text="${customerInformation.phoneNumbers}"></span></td>
         <td><span th:text="${customerInformation.emailAddresses}"></span></td>
-        <td><span th:text="${customerInformation.loyaltyPoints}"></span></td>
         <td><span th:text="${customerInformation.customerNumber}"></span></td>
+        <td><span th:text="${customerInformation.subscriptionDate}"></span></td>
+        <td><span th:text="${customerInformation.website}"></span></td>
+
     </tr>
     </tbody>
 </table>

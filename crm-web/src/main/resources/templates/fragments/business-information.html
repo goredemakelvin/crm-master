@@ -15,7 +15,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
+    <tr th:if="${businessInformation != null}">
         <td><span th:text="${businessInformation.companyName}"></span></td>
         <td><span th:text="${businessInformation.industry}"></span></td>
         <td><span th:text="${businessInformation.jobTitle}"></span></td>
