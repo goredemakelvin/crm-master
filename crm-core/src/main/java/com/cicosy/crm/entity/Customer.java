@@ -35,6 +35,8 @@ public class Customer extends BaseEntity {
     private LocalDate subscriptionDate;
     private String website;
     private String customerId;
+    @ManyToOne
+    private LeadSegment leadSegment;
 
 
 }

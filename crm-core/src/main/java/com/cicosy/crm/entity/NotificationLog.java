@@ -27,5 +27,7 @@ public class NotificationLog  extends BaseEntity{
     private boolean sent;
     private boolean delivered;
     private String channel;
+    @ManyToOne
+    private Customer customer;
 
 }

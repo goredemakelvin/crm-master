@@ -2,20 +2,19 @@ package com.cicosy.crm.notifications.service;
 
 import com.cicosy.crm.notifications.data.EmailTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.ses.SesClient;
 import software.amazon.awssdk.services.ses.model.*;
 
 @Service
-@Primary
+//@Primary
 public class AWSSimpleEmailServiceImpl implements EmailService {
 
 
     @Autowired
     private SesClient sesClient;
 
-    public String sendSimpleEmailV2(EmailTemplate details) {
+    public void sendEmailWithAttachment(EmailTemplate details) {
         Destination destination = Destination.builder()
                 .toAddresses(details.getTo())
                 .build();
@@ -44,22 +43,7 @@ public class AWSSimpleEmailServiceImpl implements EmailService {
                 .build();
 
         SendEmailResponse sendEmailResponse = sesClient.sendEmail(emailRequest);
-        return sendEmailResponse.toString();
-    }
-
-    @Override
-    public void sendEmailWithAttachmentV2(EmailTemplate emailTemplate) throws Exception {
-
-    }
-
-    @Override
-    public String sendSimpleMail(EmailTemplate details) {
-        return "";
-    }
-
-    @Override
-    public String sendEmailWithAttachment(EmailTemplate details) {
-        return "";
+        //return sendEmailResponse.toString();
     }
 
 

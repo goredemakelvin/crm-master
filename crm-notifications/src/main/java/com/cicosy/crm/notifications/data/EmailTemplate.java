@@ -15,5 +15,6 @@ public class EmailTemplate {
     private byte[] attachmentData;
     private String attachmentName;
     private String contentType;
+    private String recipientName;
 
 }

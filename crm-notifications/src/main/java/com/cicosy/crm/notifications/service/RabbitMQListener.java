@@ -19,7 +19,7 @@ public class RabbitMQListener {
     private EmailService emailService;
 
     @RabbitListener(queues = "crm.messages.queue")
-    public void onMessage(Notification notification) {
+    public void onMessage(Notification notification) throws Exception {
 
         log.info("Consuming Message - " + notification.toString());
 
@@ -28,7 +28,7 @@ public class RabbitMQListener {
         emailTemplate.setSubject(notification.getSubject());
         emailTemplate.setFrom(notification.getFrom());
         emailTemplate.setContent(notification.getContent());
-        emailService.sendSimpleMail(emailTemplate);
+        emailService.sendEmailWithAttachment(emailTemplate);
 
     }
 

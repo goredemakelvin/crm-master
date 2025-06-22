@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Email Template</title>
@@ -17,11 +17,11 @@
                 </tr>
                 <tr>
                     <td style="color: #555555; font-size: 16px; line-height: 1.6;">
-                        <p>Hi {{name}},</p>
-                        <p>Thank you for signing up. We're excited to have you on board.</p>
+                        <p>Hi <span th:text="${name}"></span></p>
+                        <p  th:text="${content}"></p>
                         <p>To get started, click the button below:</p>
                         <p style="text-align: center;">
-                            <a href="{{cta_url}}"
+                            <a th:href="${websiteUrl}"
                                style="background-color: #007bff; color: #ffffff; text-decoration: none; padding: 10px 20px; border-radius: 4px; display: inline-block;">Get
                                 Started</a>
                         </p>

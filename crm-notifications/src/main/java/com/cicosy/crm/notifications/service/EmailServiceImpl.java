@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 
 @Service
-public class EmailServiceImpl implements EmailService {
+public class EmailServiceImpl {
 
     @Autowired
     private JavaMailSender javaMailSender;
@@ -89,16 +89,5 @@ public class EmailServiceImpl implements EmailService {
             return "Error while sending mail!!!";
         }
     }
-
-    @Override
-    public String sendSimpleEmailV2(EmailTemplate details) {
-        return "";
-    }
-
-    @Override
-    public void sendEmailWithAttachmentV2(EmailTemplate emailTemplate) throws Exception {
-
-    }
-
 
 }

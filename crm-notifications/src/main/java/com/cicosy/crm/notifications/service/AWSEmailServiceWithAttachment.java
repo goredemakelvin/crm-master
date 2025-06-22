@@ -1,5 +1,6 @@
 package com.cicosy.crm.notifications.service;
 
+import com.cicosy.crm.notifications.config.ConfigReader;
 import com.cicosy.crm.notifications.data.EmailTemplate;
 import jakarta.mail.Message;
 import jakarta.mail.Multipart;
@@ -11,6 +12,8 @@ import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.internet.MimeMultipart;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 import software.amazon.awssdk.core.SdkBytes;
 import software.amazon.awssdk.services.ses.SesClient;
 import software.amazon.awssdk.services.ses.model.RawMessage;
@@ -18,20 +21,47 @@ import software.amazon.awssdk.services.ses.model.SendRawEmailRequest;
 import software.amazon.awssdk.services.ses.model.SendRawEmailResponse;
 
 import java.io.ByteArrayOutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
+
 
 @Service
 @Primary
 public class AWSEmailServiceWithAttachment implements EmailService {
 
     private final SesClient sesClient;
+    private final TemplateEngine templateEngine;
+    private final ConfigReader configReader;
 
-    public AWSEmailServiceWithAttachment(SesClient sesClient) {
+    public AWSEmailServiceWithAttachment(SesClient sesClient, TemplateEngine templateEngine, ConfigReader configReader) {
         this.sesClient = sesClient;
+        this.templateEngine = templateEngine;
+        this.configReader = configReader;
     }
 
+
+
+
+
+
+
     @Override
-    public void sendEmailWithAttachmentV2(EmailTemplate emailTemplate) throws Exception {
+    public void sendEmailWithAttachment(EmailTemplate emailTemplate) throws Exception {
+
+        Map<String, Object> variables = new HashMap<>();
+
+        // Prepare the Thymeleaf context
+        Context context = new Context();
+        variables.put("subject", emailTemplate.getSubject());
+        variables.put("content", emailTemplate.getContent());
+        variables.put("websiteUrl","https://cicosy.com");
+        variables.put("name",emailTemplate.getRecipientName());
+        context.setVariables(variables);
+        String templateContents = configReader.getTemplateContents();
+        String htmlContent = templateEngine.process("email_template", context);
+
+
 
 
         // Set up the email session
@@ -46,7 +76,7 @@ public class AWSEmailServiceWithAttachment implements EmailService {
 
         // Create the message body part
         MimeBodyPart textPart = new MimeBodyPart();
-        textPart.setContent(emailTemplate.getContent(), "text/html; charset=UTF-8");
+        textPart.setContent(htmlContent, "text/html; charset=UTF-8");
 
         // Create the attachment part
         MimeBodyPart attachmentPart = new MimeBodyPart();
@@ -77,21 +107,5 @@ public class AWSEmailServiceWithAttachment implements EmailService {
 
         SendRawEmailResponse sendRawEmailResponse = sesClient.sendRawEmail(rawEmailRequest);
     }
-
-    @Override
-    public String sendSimpleMail(EmailTemplate details) {
-        return "";
-    }
-
-    @Override
-    public String sendEmailWithAttachment(EmailTemplate details) {
-        return "";
-    }
-
-    @Override
-    public String sendSimpleEmailV2(EmailTemplate details) {
-        return "";
-    }
-
 
 }
