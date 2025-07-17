@@ -33,22 +33,70 @@
                 <li class="nav-item">
                     <a class="nav-link" th:href="@{/communication-management}">Marketing and Communication</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a th:href="@{/communication-management}" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Marketing and Communication
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  th:href="@{/lead-segment-list}" class="dropdown-item" href="#">Lead Segments</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/notification-log-list}" class="dropdown-item" href="#">Notifications</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/promotion-message-list}" class="dropdown-item" href="#">Promotion Message</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Customer Support and Services </a>
                 </li>
-
-                <li class="nav-item">
-                    <a th:href="@{/admin}" class="nav-link" href="#">Admin</a>
+                <li class="nav-item dropdown">
+                    <a th:href="@{/customer-management}" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Admin
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  th:href="@{/city-list}" class="dropdown-item" href="#">City</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/country-list}" class="dropdown-item" href="#">Country</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/industry-list}" class="dropdown-item" href="#">Industry</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/contact-list}" class="dropdown-item" href="#">Contact Person</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/admin/users}" class="dropdown-item" href="#">User Roles</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/admin}" class="dropdown-item" href="#">Home</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a th:href="@{/lead-management}" class="nav-link" href="#">Lead Management</a>
+                <li class="nav-item dropdown">
+                    <a th:href="@{/customer-management}" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Lead Management
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  th:href="@{/lead-list}" class="dropdown-item" href="#">Lead List</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/lead-upload}" class="dropdown-item" href="#">Lead Upload</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/account-list}" class="dropdown-item" href="#">Accounts</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/opportunity-list}" class="dropdown-item" href="#">Opportunity</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/contact-lead-list}" class="dropdown-item" href="#">Contact</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a th:href="@{/customer-management}" class="nav-link" href="#">Customer Management</a>
+                <li class="nav-item dropdown">
+                    <a th:href="@{/customer-management}" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Customer Management
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a th:href="@{/customer-list}" class="dropdown-item" href="#">Customer List</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/customer}" class="dropdown-item" href="#">Customer Form</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a th:href="@{/customer-upload}" class="dropdown-item" href="#">Customer Upload</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
-            <a th:href="@{/logout}" class="btn btn-outline-danger">
+            <a th:href="@{/logout}" class="btn btn-outline-warning">
                 <i class="bi bi-box-arrow-right"></i> Log out
             </a>
         </div>

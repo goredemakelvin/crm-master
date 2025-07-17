@@ -67,8 +67,8 @@ public class CustomerServiceImp extends CustomerService {
             customer = customerRepository.save(customer);
 
             Phone phone = new Phone();
-            phone.setPhoneNumber1(customerData.getPhonenumber1());
-            phone.setPhoneNumber2(customerData.getPhonenumber2());
+            phone.setPhoneNumber1(customerData.getPhoneNumber1());
+            phone.setPhoneNumber2(customerData.getPhoneNumber2());
             phone.setCustomer(customer);
             phoneRepository.save(phone);
             customer.getPhoneNumbers().add(phone);

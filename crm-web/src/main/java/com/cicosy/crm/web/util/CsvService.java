@@ -38,8 +38,8 @@ public class CsvService {
                     customerData.setCompanyName(parts[3].trim());
                     customerData.setCity(parts[4].trim());
                     customerData.setCountry(parts[5].trim());
-                    customerData.setPhonenumber1(parts[6].trim());
-                    customerData.setPhonenumber2(parts[7].trim());
+                    customerData.setPhoneNumber1(parts[6].trim());
+                    customerData.setPhoneNumber2(parts[7].trim());
                     customerData.setEmailAddress(parts[8].trim());
                     String subscriptionDate = parts[9].trim();
                     String website = parts[10].trim();

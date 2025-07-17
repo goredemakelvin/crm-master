@@ -19,8 +19,8 @@ public class CustomerData {
     private String companyName ;
     private String city;
     private String country;
-    private String phonenumber1;
-    private String phonenumber2 ;
+    private String phoneNumber1;
+    private String phoneNumber2 ;
     private LocalDate subscriptionDate;
     private String website;
 

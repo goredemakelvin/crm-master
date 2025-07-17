@@ -85,8 +85,8 @@ public class ExcelHelper {
                 data.setFirstName(firstName);
                 data.setLastName(lastName);
                 data.setCustomerID(customerID);
-                data.setPhonenumber1(phonenumber1);
-                data.setPhonenumber2(phonenumber2);
+                data.setPhoneNumber1(phonenumber1);
+                data.setPhoneNumber2(phonenumber2);
                 data.setEmailAddress(emailAddress);
                 data.setCompanyName(companyName);
                 data.setCity(city);

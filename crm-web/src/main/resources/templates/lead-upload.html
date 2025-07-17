@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-</head>
-
-<body>
-
 <!-- Main navbar -->
 <div th:replace="/fragments/header :: header"></div>
 <!-- /main navbar -->
-
+<body>
 <div class="container mt-3">
     <a th:href="@{/lead-management}"><i class="bi bi-arrow-left-circle">Back</i></a>
     <h2>Lead Upload Page</h2>
@@ -21,12 +16,9 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
 <!-- Footer -->
 <div th:replace="/fragments/footer :: footer"></div>
 <!-- /footer -->
-
-</div>
 <!-- /page container -->
 
 </body>
