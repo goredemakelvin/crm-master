@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-</head>
-
-<body>
 <!-- Main navbar -->
 <div th:replace="/fragments/header :: header"></div>
 <!-- /main navbar -->
-
+<body>
 <div class="container mt-3">
     <a th:href="@{/admin}"><i class="material-icons" style="font-size:24px;color:red">arrow_back</i></a>
     <nav class="nav ">
@@ -61,13 +57,8 @@
         </li>
     </ul>
 </div>
-
-
 <!-- Footer -->
 <div th:replace="/fragments/footer :: footer"></div>
 <!-- /footer -->
-
-</div>
-
 </body>
 </html>
