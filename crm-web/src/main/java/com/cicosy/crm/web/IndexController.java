@@ -1,6 +1,7 @@
 package com.cicosy.crm.web;
 
 import com.cicosy.crm.data.LeadData;
+import com.cicosy.crm.repo.*;
 import com.cicosy.crm.service.CustomerService;
 import com.cicosy.crm.service.LeadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,24 @@ public class IndexController {
     private LeadService leadService;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private LeadRepository leadRepository;
+    @Autowired
+    private CityRepository cityRepository;
+    @Autowired
+    private BusinessInformationRepository businessInformationRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
+    @Autowired
+    private CountryRepository countryRepository;
+    @Autowired
+    private ContactRepository contactRepository;
+    @Autowired
+    private AccountRepository accountRepository;
+    @Autowired
+    private OpportunityRepository opportunityRepository;
+    @Autowired
+    private NotificationLogRepository notificationLogRepository;
 
     @GetMapping("/")
     public String index() {
@@ -40,6 +59,14 @@ public class IndexController {
             LeadData lead = new LeadData();
             return lead.getLeadData(item);
         });
+        model.addAttribute("customerCount",customerRepository.count());
+        model.addAttribute("cityCount",cityRepository.count());
+        model.addAttribute("businessInfoCount",businessInformationRepository.count());
+        model.addAttribute("countryCount",countryRepository.count());
+        model.addAttribute("opportunityCount",opportunityRepository.count());
+        model.addAttribute("contactCount",contactRepository.count());
+        model.addAttribute("accountCount",accountRepository.count());
+        model.addAttribute("notificationCount",accountRepository.count());
         model.addAttribute("leadsPage", leadsPage);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", leadsPage.getTotalPages());
